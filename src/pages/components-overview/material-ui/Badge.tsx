@@ -1,6 +1,5 @@
-import { Badge, Box, Container, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/material
 import MailIcon from '@material-ui/icons/Mail';
+import { Badge, Box, Container, Grid, styled, Typography } from '@mui/material';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

@@ -7,10 +7,10 @@ import {
   Container,
   FormControlLabel,
   Stack,
+  styled,
   Switch,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

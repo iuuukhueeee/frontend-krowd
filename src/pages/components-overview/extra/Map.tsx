@@ -7,8 +7,8 @@ import {
   Container,
   Grid,
   Skeleton,
+  styled,
 } from '@mui/material';
-import { styled } from '@mui/material
 import mapboxgl from 'mapbox-gl';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

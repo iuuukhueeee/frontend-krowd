@@ -8,7 +8,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import { SnackbarOrigin, useSnackbar, VariantType } from 'notistack5';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

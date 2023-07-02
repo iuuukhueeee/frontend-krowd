@@ -10,7 +10,7 @@ import {
   FormGroup,
   Grid,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import Favorite from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 

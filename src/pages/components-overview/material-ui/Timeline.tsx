@@ -1,5 +1,3 @@
-import { Box, Container, Grid, Paper, Typography } from '@mui/material';
-import { styled } from '@mui/material
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import HotelIcon from '@material-ui/icons/Hotel';
 import LaptopMacIcon from '@material-ui/icons/LaptopMac';
@@ -13,6 +11,7 @@ import {
   TimelineOppositeContent,
   TimelineSeparator,
 } from '@material-ui/lab';
+import { Box, Container, Grid, Paper, styled, Typography } from '@mui/material';
 import { last, slice } from 'lodash';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

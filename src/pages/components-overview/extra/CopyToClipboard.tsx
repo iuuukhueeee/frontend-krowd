@@ -1,5 +1,4 @@
-import { Box, Card, CardContent, Container } from '@mui/material';
-import { styled } from '@mui/material
+import { Box, Card, CardContent, Container, styled } from '@mui/material';
 
 import CopyClipboard from '../../../components/CopyClipboard';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

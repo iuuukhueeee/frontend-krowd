@@ -4,13 +4,12 @@ import chargingFill from '@iconify/icons-eva/charging-fill';
 import clockFill from '@iconify/icons-eva/clock-fill';
 import colorPaletteFill from '@iconify/icons-eva/color-palette-fill';
 import { Icon } from '@iconify/react';
-import { Box, Container, Stack, SvgIcon } from '@mui/material';
-import { styled } from '@mui/material
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AdbIcon from '@material-ui/icons/Adb';
 import AddIcon from '@material-ui/icons/Add';
 import AirplanemodeActiveIcon from '@material-ui/icons/AirplanemodeActive';
 import AppleIcon from '@material-ui/icons/Apple';
+import { Box, Container, Stack, styled, SvgIcon } from '@mui/material';
 
 import CodeSnippets from '../../../components/CodeSnippets';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

@@ -9,7 +9,7 @@ import {
   Container,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import faker from 'faker';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

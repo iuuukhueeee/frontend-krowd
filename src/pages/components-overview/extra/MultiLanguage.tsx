@@ -8,10 +8,10 @@ import {
   Radio,
   RadioGroup,
   Stack,
+  styled,
   TablePagination,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

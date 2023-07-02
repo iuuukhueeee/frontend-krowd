@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Container, Tab } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';

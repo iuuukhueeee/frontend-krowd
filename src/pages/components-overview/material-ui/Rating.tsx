@@ -1,7 +1,4 @@
 import { useState } from 'react';
-import { Box, Container, Rating, Stack } from '@mui/material';
-import { IconContainerProps } from '@mui/material/Rating';
-import { styled } from '@mui/material
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -9,6 +6,8 @@ import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltO
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import { withStyles } from '@material-ui/styles';
+import { Box, Container, Rating, Stack, styled } from '@mui/material';
+import { IconContainerProps } from '@mui/material/Rating';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

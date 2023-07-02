@@ -1,5 +1,4 @@
-import { Divider } from '@mui/material';
-import { styled } from '@mui/material
+import { Divider, styled } from '@mui/material';
 
 import {
   AboutHero,

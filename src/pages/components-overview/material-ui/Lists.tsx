@@ -19,7 +19,7 @@ import {
   Paper,
   Switch,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import BeachAccessIcon from '@material-ui/icons/BeachAccess';
 import BluetoothIcon from '@material-ui/icons/Bluetooth';
 import CommentIcon from '@material-ui/icons/Comment';

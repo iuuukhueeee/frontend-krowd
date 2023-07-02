@@ -7,8 +7,8 @@ import {
   CardHeader,
   Container,
   Stack,
+  styled,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 import { DraftEditor, QuillEditor } from '../../../components/editor';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';

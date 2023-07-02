@@ -8,7 +8,7 @@ import {
   RadioGroup,
   Stack,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

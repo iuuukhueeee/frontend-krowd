@@ -1,5 +1,5 @@
 import { Box, Container, Stack } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Label from '../../../components/Label';

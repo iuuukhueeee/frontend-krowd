@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Container, Stack, Tab, Tabs } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import PhoneIcon from '@material-ui/icons/Phone';

@@ -1,6 +1,5 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Button, Container, Typography } from '@mui/material';
-import { styled } from '@mui/material
+import { Box, Button, Container, styled, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 
 import { PageNotFoundIllustration } from '../assets';

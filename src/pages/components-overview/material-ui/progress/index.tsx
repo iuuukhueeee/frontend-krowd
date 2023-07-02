@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, Container, Stack } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
 import Page from '../../../../components/Page';

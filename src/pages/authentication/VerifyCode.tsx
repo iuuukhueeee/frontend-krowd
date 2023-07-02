@@ -1,8 +1,14 @@
 import { Link as RouterLink } from 'react-router-dom';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import { Icon } from '@iconify/react';
-import { Box, Button, Container, Link, Typography } from '@mui/material';
-import { styled } from '@mui/material
+import {
+  Box,
+  Button,
+  Container,
+  Link,
+  styled,
+  Typography,
+} from '@mui/material';
 
 import { VerifyCodeForm } from '../../components/authentication/verify-code';
 import Page from '../../components/Page';

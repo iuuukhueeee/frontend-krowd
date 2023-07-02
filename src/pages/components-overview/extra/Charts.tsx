@@ -5,8 +5,8 @@ import {
   CardHeader,
   Container,
   Grid,
+  styled,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 import {
   ChartArea,

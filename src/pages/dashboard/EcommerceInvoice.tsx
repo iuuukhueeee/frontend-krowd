@@ -12,7 +12,7 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import faker from 'faker';
 import { sum } from 'lodash';
 

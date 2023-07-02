@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {
   Box,
   Button,
@@ -10,9 +11,8 @@ import {
   Menu,
   MenuItem,
   Stack,
+  styled,
 } from '@mui/material';
-import { styled } from '@mui/material
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import Page from '../../../components/Page';

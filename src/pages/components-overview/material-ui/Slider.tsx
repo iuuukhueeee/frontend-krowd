@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Container, Grid, Slider, Typography } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 

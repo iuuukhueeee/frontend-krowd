@@ -9,10 +9,10 @@ import {
   Container,
   InputAdornment,
   OutlinedInput,
+  styled,
   Tooltip,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 import { ComingSoonIllustration } from '../assets';
 import { MIconButton } from '../components/@material-extend';

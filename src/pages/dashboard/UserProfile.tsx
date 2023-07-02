@@ -5,7 +5,7 @@ import roundAccountBox from '@iconify/icons-ic/round-account-box';
 import roundPermMedia from '@iconify/icons-ic/round-perm-media';
 import { Icon } from '@iconify/react';
 import { Box, Card, Container, Tab, Tabs } from '@mui/material';
-import { styled } from '@mui/material
+import { styled } from '@mui/material'
 import { capitalCase } from 'change-case';
 
 import {

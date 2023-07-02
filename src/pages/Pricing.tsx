@@ -3,10 +3,10 @@ import {
   Container,
   Grid,
   Stack,
+  styled,
   Switch,
   Typography,
 } from '@mui/material';
-import { styled } from '@mui/material
 
 //
 import { PlanFreeIcon, PlanPremiumIcon, PlanStarterIcon } from '../assets';

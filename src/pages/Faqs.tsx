@@ -1,5 +1,4 @@
-import { Container, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/material
+import { Container, Grid, styled, Typography } from '@mui/material';
 
 import {
   FaqsCategory,

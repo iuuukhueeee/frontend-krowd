@@ -1,5 +1,4 @@
-import { Container, Grid } from '@mui/material';
-import { styled } from '@mui/material
+import { Container, Grid, styled } from '@mui/material';
 
 import {
   ContactForm,

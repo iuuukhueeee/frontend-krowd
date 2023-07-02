@@ -3,10 +3,11 @@ import {
   Card,
   Container,
   Grid,
+  styled,
   Typography,
   useMediaQuery,
+  useTheme,
 } from '@mui/material';
-import { styled, useTheme } from '@mui/material
 import { Form, FormikProvider, useFormik } from 'formik';
 import { useSnackbar } from 'notistack5';
 import * as Yup from 'yup';
