@@ -1,6 +1,4 @@
-import { TextField, Autocomplete } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Autocomplete, TextField } from '@mui/material';
 
 type SizesProps = {
   options: {

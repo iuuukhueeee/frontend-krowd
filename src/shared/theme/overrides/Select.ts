@@ -1,10 +1,10 @@
-import { ExpandMoreRoundedIcon, Theme } from '@mui/material';
+import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown';
 
-export default function Select(theme: Theme) {
+export default function Select() {
   return {
     MuiSelect: {
       defaultProps: {
-        IconComponent: ExpandMoreRoundedIcon,
+        IconComponent: ExpandCircleDownIcon,
       },
 
       styleOverrides: {

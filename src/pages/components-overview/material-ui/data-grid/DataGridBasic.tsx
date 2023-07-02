@@ -1,31 +1,28 @@
-import faker from 'faker';
-import { Icon } from '@iconify/react';
 import moreVerticalFill from '@iconify/icons-eva/more-vertical-fill';
-// material
+import { Icon } from '@iconify/react';
 import { DataGrid, GridColDef } from '@material-ui/data-grid';
-import { Box } from '@material-ui/core';
-// components
-import { MIconButton } from '../../../../components/@material-extend';
+import { Box } from '@mui/material';
+import faker from 'faker';
 
-// ----------------------------------------------------------------------
+import { MIconButton } from '../../../../components/@material-extend';
 
 const columns: GridColDef[] = [
   {
     field: 'id',
     headerName: 'ID',
-    width: 120
+    width: 120,
   },
   {
     field: 'firstName',
     headerName: 'First name',
     width: 160,
-    editable: true
+    editable: true,
   },
   {
     field: 'lastName',
     headerName: 'Last name',
     width: 160,
-    editable: true
+    editable: true,
   },
   {
     field: 'age',
@@ -34,7 +31,7 @@ const columns: GridColDef[] = [
     width: 120,
     editable: true,
     align: 'center',
-    headerAlign: 'center'
+    headerAlign: 'center',
   },
   {
     field: 'fullName',
@@ -44,7 +41,7 @@ const columns: GridColDef[] = [
     valueGetter: (params) =>
       `${params.getValue(params.id, 'firstName') || ''} ${
         params.getValue(params.id, 'lastName') || ''
-      }`
+      }`,
   },
   {
     field: 'action',
@@ -55,10 +52,14 @@ const columns: GridColDef[] = [
     disableColumnMenu: true,
     renderCell: () => (
       <MIconButton>
-        <Box component={Icon} icon={moreVerticalFill} sx={{ width: 20, height: 20 }} />
+        <Box
+          component={Icon}
+          icon={moreVerticalFill}
+          sx={{ width: 20, height: 20 }}
+        />
       </MIconButton>
-    )
-  }
+    ),
+  },
 ];
 
 const rows = [...Array(30)].map((_, index) => {
@@ -67,10 +68,17 @@ const rows = [...Array(30)].map((_, index) => {
     id: setIndex,
     lastName: faker.name.lastName(),
     firstName: faker.name.firstName(),
-    age: faker.datatype.number({ min: 17, max: 45 })
+    age: faker.datatype.number({ min: 17, max: 45 }),
   };
 });
 
 export default function DataGridBasic() {
-  return <DataGrid columns={columns} rows={rows} checkboxSelection disableSelectionOnClick />;
+  return (
+    <DataGrid
+      columns={columns}
+      rows={rows}
+      checkboxSelection
+      disableSelectionOnClick
+    />
+  );
 }

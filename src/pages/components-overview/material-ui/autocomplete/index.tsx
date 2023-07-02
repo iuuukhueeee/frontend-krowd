@@ -1,21 +1,18 @@
-// material
-import { Card, Grid, Container, CardContent } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../../routes/paths';
-// components
-import Page from '../../../../components/Page';
+import { Card, CardContent, Container, Grid } from '@mui/material';
+
 import Block from '../../../../components/Block';
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
+import Page from '../../../../components/Page';
+import { PATH_PAGE } from '../../../../routes/paths';
+
+import Checkboxes from './Checkboxes';
+import ComboBox from './ComboBox';
+import ControllableStates from './ControllableStates';
+import CountrySelect from './CountrySelect';
+import FreeSolo from './FreeSolo';
+import MultipleValues from './MultipleValues';
 //
 import Sizes from './Sizes';
-import ComboBox from './ComboBox';
-import FreeSolo from './FreeSolo';
-import Checkboxes from './Checkboxes';
-import CountrySelect from './CountrySelect';
-import MultipleValues from './MultipleValues';
-import ControllableStates from './ControllableStates';
-
-// ----------------------------------------------------------------------
 
 export default function AutocompleteComponent() {
   return (
@@ -23,7 +20,10 @@ export default function AutocompleteComponent() {
       <Container maxWidth="lg">
         <HeaderBreadcrumbs
           heading="Autocomplete"
-          links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Autocomplete' }]}
+          links={[
+            { name: 'Components', href: PATH_PAGE.components },
+            { name: 'Autocomplete' },
+          ]}
           moreLink="https://next.material-ui.com/components/autocomplete"
         />
         <Card>
@@ -134,8 +134,9 @@ const top100Films = [
   { title: 'Alien', year: 1979 },
   { title: 'Sunset Boulevard', year: 1950 },
   {
-    title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-    year: 1964
+    title:
+      'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+    year: 1964,
   },
   { title: 'The Great Dictator', year: 1940 },
   { title: 'Cinema Paradiso', year: 1988 },
@@ -183,7 +184,7 @@ const top100Films = [
   { title: 'Inglourious Basterds', year: 2009 },
   { title: 'Snatch', year: 2000 },
   { title: '3 Idiots', year: 2009 },
-  { title: 'Monty Python and the Holy Grail', year: 1975 }
+  { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
 const countries = [
@@ -278,7 +279,7 @@ const countries = [
   {
     code: 'GS',
     label: 'South Georgia and the South Sandwich Islands',
-    phone: '500'
+    phone: '500',
   },
   { code: 'GT', label: 'Guatemala', phone: '502' },
   { code: 'GU', label: 'Guam', phone: '1-671' },
@@ -336,7 +337,7 @@ const countries = [
   {
     code: 'MK',
     label: 'Macedonia, the Former Yugoslav Republic of',
-    phone: '389'
+    phone: '389',
   },
   { code: 'ML', label: 'Mali', phone: '223' },
   { code: 'MM', label: 'Myanmar', phone: '95' },
@@ -442,5 +443,5 @@ const countries = [
   { code: 'YT', label: 'Mayotte', phone: '262' },
   { code: 'ZA', label: 'South Africa', phone: '27' },
   { code: 'ZM', label: 'Zambia', phone: '260' },
-  { code: 'ZW', label: 'Zimbabwe', phone: '263' }
+  { code: 'ZW', label: 'Zimbabwe', phone: '263' },
 ];

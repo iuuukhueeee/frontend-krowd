@@ -1,23 +1,18 @@
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Container, Stack, Card, CardHeader } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../../routes/paths';
-// components
-import Page from '../../../../components/Page';
+import { Box, Card, CardHeader, Container, Stack } from '@mui/material';
+import { styled } from '@mui/material
+
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
+import Page from '../../../../components/Page';
+import { PATH_PAGE } from '../../../../routes/paths';
+
 //
 import DataGridBasic from './DataGridBasic';
 import DataGridCustom from './DataGridCustom';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function DataGridComponent() {
   return (
@@ -27,13 +22,17 @@ export default function DataGridComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="DataGrid"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'DataGrid' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'DataGrid' },
+            ]}
             moreLink="https://material-ui.com/components/data-grid"
           />
         </Container>

@@ -1,40 +1,34 @@
-import { Icon } from '@iconify/react';
-import { capitalCase } from 'change-case';
 import { useEffect, useState } from 'react';
 import heartFill from '@iconify/icons-eva/heart-fill';
 import peopleFill from '@iconify/icons-eva/people-fill';
-import roundPermMedia from '@iconify/icons-ic/round-perm-media';
 import roundAccountBox from '@iconify/icons-ic/round-account-box';
-// material
-import { styled } from '@material-ui/core/styles';
-import { Tab, Box, Card, Tabs, Container } from '@material-ui/core';
-// redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
-import {
-  getPosts,
-  getGallery,
-  getFriends,
-  getProfile,
-  getFollowers,
-  onToggleFollow
-} from '../../redux/slices/user';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useAuth from '../../hooks/useAuth';
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import roundPermMedia from '@iconify/icons-ic/round-perm-media';
+import { Icon } from '@iconify/react';
+import { Box, Card, Container, Tab, Tabs } from '@mui/material';
+import { styled } from '@mui/material
+import { capitalCase } from 'change-case';
+
 import {
   Profile,
   ProfileCover,
+  ProfileFollowers,
   ProfileFriends,
   ProfileGallery,
-  ProfileFollowers
 } from '../../components/_dashboard/user/profile';
-
-// ----------------------------------------------------------------------
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page';
+import useAuth from '../../hooks/useAuth';
+import useSettings from '../../hooks/useSettings';
+import {
+  getFollowers,
+  getFriends,
+  getGallery,
+  getPosts,
+  getProfile,
+  onToggleFollow,
+} from '../../redux/slices/user';
+import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 const TabsWrapperStyle = styled('div')(({ theme }) => ({
   zIndex: 9,
@@ -44,15 +38,13 @@ const TabsWrapperStyle = styled('div')(({ theme }) => ({
   position: 'absolute',
   backgroundColor: theme.palette.background.paper,
   [theme.breakpoints.up('sm')]: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   [theme.breakpoints.up('md')]: {
     justifyContent: 'flex-end',
-    paddingRight: theme.spacing(3)
-  }
+    paddingRight: theme.spacing(3),
+  },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function UserProfile() {
   const { themeStretch } = useSettings();
@@ -93,12 +85,17 @@ export default function UserProfile() {
     {
       value: 'profile',
       icon: <Icon icon={roundAccountBox} width={20} height={20} />,
-      component: <Profile myProfile={myProfile} posts={posts} />
+      component: <Profile myProfile={myProfile} posts={posts} />,
     },
     {
       value: 'followers',
       icon: <Icon icon={heartFill} width={20} height={20} />,
-      component: <ProfileFollowers followers={followers} onToggleFollow={handleToggleFollow} />
+      component: (
+        <ProfileFollowers
+          followers={followers}
+          onToggleFollow={handleToggleFollow}
+        />
+      ),
     },
     {
       value: 'friends',
@@ -109,13 +106,13 @@ export default function UserProfile() {
           findFriends={findFriends}
           onFindFriends={handleFindFriends}
         />
-      )
+      ),
     },
     {
       value: 'gallery',
       icon: <Icon icon={roundPermMedia} width={20} height={20} />,
-      component: <ProfileGallery gallery={gallery} />
-    }
+      component: <ProfileGallery gallery={gallery} />,
+    },
   ];
 
   return (
@@ -126,14 +123,14 @@ export default function UserProfile() {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: user?.displayName || '' }
+            { name: user?.displayName || '' },
           ]}
         />
         <Card
           sx={{
             mb: 3,
             height: 280,
-            position: 'relative'
+            position: 'relative',
           }}
         >
           <ProfileCover myProfile={myProfile} />

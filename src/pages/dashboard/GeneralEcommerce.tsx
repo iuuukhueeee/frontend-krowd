@@ -1,24 +1,20 @@
-// material
-import { Container, Grid } from '@material-ui/core';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
+import { Container, Grid } from '@mui/material';
+
 import {
-  EcommerceWelcome,
+  EcommerceBestSalesman,
+  EcommerceCurrentBalance,
+  EcommerceLatestProducts,
   EcommerceNewProducts,
   EcommerceProductSold,
-  EcommerceSalesProfit,
-  EcommerceYearlySales,
-  EcommerceBestSalesman,
-  EcommerceTotalBalance,
   EcommerceSaleByGender,
   EcommerceSalesOverview,
-  EcommerceLatestProducts,
-  EcommerceCurrentBalance
+  EcommerceSalesProfit,
+  EcommerceTotalBalance,
+  EcommerceWelcome,
+  EcommerceYearlySales,
 } from '../../components/_dashboard/general-ecommerce';
-
-// ----------------------------------------------------------------------
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
 
 export default function GeneralEcommerce() {
   const { themeStretch } = useSettings();

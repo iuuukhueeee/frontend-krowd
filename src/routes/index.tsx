@@ -2,17 +2,12 @@ import { lazy, Suspense } from 'react';
 import { Navigate, useLocation, useRoutes } from 'react-router-dom';
 
 // import RoleBasedGuard from '../guards/RoleBasedGuard';
-// components
 import LoadingScreen from '../components/LoadingScreen';
 import AuthGuard from '../guards/AuthGuard';
-// guards
 import GuestGuard from '../guards/GuestGuard';
 import DashboardLayout from '../layouts/dashboard';
 import LogoOnlyLayout from '../layouts/LogoOnlyLayout';
-// layouts
 import MainLayout from '../layouts/main';
-
-// ----------------------------------------------------------------------
 
 const Loadable = (Component: any) => (props: any) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -68,7 +63,6 @@ export default function Router() {
       ],
     },
 
-    // Dashboard Routes
     {
       path: 'dashboard',
       element: (
@@ -153,7 +147,6 @@ export default function Router() {
       ],
     },
 
-    // Main Routes
     {
       path: '*',
       element: <LogoOnlyLayout />,
@@ -179,13 +172,11 @@ export default function Router() {
           path: 'components',
           children: [
             { path: '/', element: <ComponentsOverview /> },
-            // FOUNDATIONS
             { path: 'color', element: <Color /> },
             { path: 'typography', element: <Typography /> },
             { path: 'shadows', element: <Shadows /> },
             { path: 'grid', element: <Grid /> },
             { path: 'icons', element: <Icons /> },
-            // MATERIAL UI
             { path: 'accordion', element: <Accordion /> },
             { path: 'alert', element: <Alert /> },
             { path: 'autocomplete', element: <Autocomplete /> },
@@ -217,7 +208,6 @@ export default function Router() {
             { path: 'transfer-list', element: <TransferList /> },
             { path: 'tree-view', element: <TreeView /> },
             { path: 'data-grid', element: <DataGrid /> },
-            // EXTRA COMPONENTS
             { path: 'chart', element: <Charts /> },
             { path: 'map', element: <Map /> },
             { path: 'editor', element: <Editor /> },
@@ -235,9 +225,6 @@ export default function Router() {
   ]);
 }
 
-// IMPORT COMPONENTS
-
-// Authentication
 const Login = Loadable(lazy(() => import('../modules/auth/page/Login')));
 const Register = Loadable(lazy(() => import('../modules/auth/page/Register')));
 const ResetPassword = Loadable(
@@ -246,7 +233,6 @@ const ResetPassword = Loadable(
 const VerifyCode = Loadable(
   lazy(() => import('../pages/authentication/VerifyCode'))
 );
-// Dashboard
 const GeneralApp = Loadable(
   lazy(() => import('../pages/dashboard/GeneralApp'))
 );
@@ -294,7 +280,6 @@ const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));
 const Mail = Loadable(lazy(() => import('../pages/dashboard/Mail')));
 const Calendar = Loadable(lazy(() => import('../pages/dashboard/Calendar')));
 const Kanban = Loadable(lazy(() => import('../pages/dashboard/Kanban')));
-// Main
 const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const About = Loadable(lazy(() => import('../pages/About')));
 const Contact = Loadable(lazy(() => import('../pages/Contact')));
@@ -305,7 +290,6 @@ const Pricing = Loadable(lazy(() => import('../pages/Pricing')));
 const Payment = Loadable(lazy(() => import('../pages/Payment')));
 const Page500 = Loadable(lazy(() => import('../pages/Page500')));
 const NotFound = Loadable(lazy(() => import('../pages/Page404')));
-// Components
 const ComponentsOverview = Loadable(
   lazy(() => import('../pages/ComponentsOverview'))
 );

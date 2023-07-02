@@ -83,8 +83,6 @@ const RootStyle = styled('span')(
   }
 );
 
-// ----------------------------------------------------------------------
-
 interface LabelProps extends BoxProps {
   color?: LabelColor;
   variant?: LabelVariant;

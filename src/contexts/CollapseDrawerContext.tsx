@@ -1,9 +1,6 @@
-import { ReactNode, createContext, useState, useEffect } from 'react';
-// material
-import { useMediaQuery } from '@material-ui/core';
-import { useTheme } from '@material-ui/core/styles';
-
-// ----------------------------------------------------------------------
+import { createContext, ReactNode, useEffect, useState } from 'react';
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material
 
 export type CollapseDrawerContextProps = {
   isCollapse?: boolean;
@@ -19,7 +16,7 @@ const initialState: CollapseDrawerContextProps = {
   collapseHover: false,
   onToggleCollapse: () => {},
   onHoverEnter: () => {},
-  onHoverLeave: () => {}
+  onHoverLeave: () => {},
 };
 
 const CollapseDrawerContext = createContext(initialState);
@@ -33,14 +30,14 @@ function CollapseDrawerProvider({ children }: CollapseDrawerProviderProps) {
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
   const [collapse, setCollapse] = useState({
     click: false,
-    hover: false
+    hover: false,
   });
 
   useEffect(() => {
     if (isMobile) {
       setCollapse({
         click: false,
-        hover: false
+        hover: false,
       });
     }
   }, [isMobile]);
@@ -67,7 +64,7 @@ function CollapseDrawerProvider({ children }: CollapseDrawerProviderProps) {
         collapseHover: collapse.hover,
         onToggleCollapse: handleToggleCollapse,
         onHoverEnter: handleHoverEnter,
-        onHoverLeave: handleHoverLeave
+        onHoverLeave: handleHoverLeave,
       }}
     >
       {children}

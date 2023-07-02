@@ -1,26 +1,30 @@
 import { useState } from 'react';
-// material
 import {
   Box,
-  Table,
-  Switch,
   Checkbox,
-  TableRow,
+  FormControlLabel,
+  Switch,
+  Table,
   TableBody,
   TableCell,
   TableContainer,
   TablePagination,
-  FormControlLabel
-} from '@material-ui/core';
-// components
+  TableRow,
+} from '@mui/material';
+
 import Scrollbar from '../../../../../components/Scrollbar';
+
 //
 import SortingSelectingHead from './SortingSelectingHead';
 import SortingSelectingToolbar from './SortingSelectingToolbar';
 
-// ----------------------------------------------------------------------
-
-function createData(name: string, calories: number, fat: number, carbs: number, protein: number) {
+function createData(
+  name: string,
+  calories: number,
+  fat: number,
+  carbs: number,
+  protein: number
+) {
   return { name, calories, fat, carbs, protein };
 }
 
@@ -37,7 +41,7 @@ const SORTING_SELECTING_TABLE = [
   createData('Lollipop', 392, 0.2, 98, 0.0),
   createData('Marshmallow', 318, 0, 81, 2.0),
   createData('Nougat', 360, 19.0, 9, 37.0),
-  createData('Oreo', 437, 18.0, 63, 4.0)
+  createData('Oreo', 437, 18.0, 63, 4.0),
 ];
 
 type SortItem = {
@@ -53,35 +57,33 @@ const TABLE_HEAD = [
     id: 'name',
     numeric: false,
     disablePadding: true,
-    label: 'Dessert (100g serving)'
+    label: 'Dessert (100g serving)',
   },
   {
     id: 'calories',
     numeric: true,
     disablePadding: false,
-    label: 'Calories'
+    label: 'Calories',
   },
   {
     id: 'fat',
     numeric: true,
     disablePadding: false,
-    label: 'Fat (g)'
+    label: 'Fat (g)',
   },
   {
     id: 'carbs',
     numeric: true,
     disablePadding: false,
-    label: 'Carbs (g)'
+    label: 'Carbs (g)',
   },
   {
     id: 'protein',
     numeric: true,
     disablePadding: false,
-    label: 'Protein (g)'
-  }
+    label: 'Protein (g)',
+  },
 ];
-
-// ----------------------------------------------------------------------
 
 type Anonymous = Record<string | number, string>;
 
@@ -157,7 +159,9 @@ export default function SortingSelecting() {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -166,7 +170,9 @@ export default function SortingSelecting() {
 
   // Avoid a layout jump when reaching the last page with empty SORTING_SELECTING_TABLE.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - SORTING_SELECTING_TABLE.length) : 0;
+    page > 0
+      ? Math.max(0, (1 + page) * rowsPerPage - SORTING_SELECTING_TABLE.length)
+      : 0;
 
   return (
     <div>
@@ -185,7 +191,10 @@ export default function SortingSelecting() {
               onSelectAllClick={handleSelectAllClick}
             />
             <TableBody>
-              {stableSort(SORTING_SELECTING_TABLE, getComparator(order, orderBy))
+              {stableSort(
+                SORTING_SELECTING_TABLE,
+                getComparator(order, orderBy)
+              )
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   const isItemSelected = isSelected(row.name);
@@ -204,7 +213,12 @@ export default function SortingSelecting() {
                       <TableCell padding="checkbox">
                         <Checkbox checked={isItemSelected} />
                       </TableCell>
-                      <TableCell component="th" id={labelId} scope="row" padding="none">
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        padding="none"
+                      >
                         {row.name}
                       </TableCell>
                       <TableCell align="right">{row.calories}</TableCell>
@@ -217,7 +231,7 @@ export default function SortingSelecting() {
               {emptyRows > 0 && (
                 <TableRow
                   style={{
-                    height: (dense ? 33 : 53) * emptyRows
+                    height: (dense ? 33 : 53) * emptyRows,
                   }}
                 >
                   <TableCell colSpan={6} />
@@ -243,7 +257,7 @@ export default function SortingSelecting() {
             px: 3,
             py: 1.5,
             top: 0,
-            position: { md: 'absolute' }
+            position: { md: 'absolute' },
           }}
         >
           <FormControlLabel

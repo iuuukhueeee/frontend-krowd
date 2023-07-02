@@ -1,6 +1,4 @@
-import { Checkbox, TextField, Autocomplete } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Autocomplete, Checkbox, TextField } from '@mui/material';
 
 type CheckboxesProps = {
   options: {
@@ -23,7 +21,9 @@ export default function Checkboxes({ options }: CheckboxesProps) {
           {option.title}
         </li>
       )}
-      renderInput={(params) => <TextField {...params} label="Checkboxes" placeholder="Favorites" />}
+      renderInput={(params) => (
+        <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+      )}
     />
   );
 }

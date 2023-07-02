@@ -1,14 +1,10 @@
 import { ReactNode } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Typography } from '@mui/material';
-// material
 import { styled } from '@mui/system';
 
 import { MHidden } from '../components/@material-extend';
-// components
 import Logo from '../components/Logo';
-
-// ----------------------------------------------------------------------
 
 const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
@@ -25,8 +21,6 @@ const HeaderStyle = styled('header')(({ theme }) => ({
     padding: theme.spacing(7, 5, 0, 7),
   },
 }));
-
-// ----------------------------------------------------------------------
 
 type AuthLayoutProps = {
   children: ReactNode;

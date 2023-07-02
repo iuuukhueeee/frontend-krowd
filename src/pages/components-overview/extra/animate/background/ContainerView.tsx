@@ -1,16 +1,17 @@
+import { Box, Paper } from '@mui/material';
 import { motion } from 'framer-motion';
-// material
-import { Box, Paper } from '@material-ui/core';
+
 //
 import getVariant from '../getVariant';
-
-// ----------------------------------------------------------------------
 
 type ContainerViewProps = {
   selectVariant: string;
 };
 
-export default function ContainerView({ selectVariant, ...other }: ContainerViewProps) {
+export default function ContainerView({
+  selectVariant,
+  ...other
+}: ContainerViewProps) {
   const isKenburns = selectVariant.includes('kenburns');
 
   return (
@@ -19,7 +20,7 @@ export default function ContainerView({ selectVariant, ...other }: ContainerView
         height: 480,
         width: '100%',
         overflow: 'hidden',
-        boxShadow: (theme) => theme.customShadows.z8
+        boxShadow: (theme) => theme.customShadows.z8,
       }}
       {...other}
     >

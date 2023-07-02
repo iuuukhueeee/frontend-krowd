@@ -1,10 +1,7 @@
-// material
 import fileFill from '@iconify/icons-eva/file-fill';
 //
 import { Icon } from '@iconify/react';
 import { Box } from '@mui/material';
-
-// ----------------------------------------------------------------------
 
 const FORMAT_IMG = ['jpg', 'jpeg', 'gif', 'bmp', 'png'];
 const FORMAT_VIDEO = ['m4v', 'avi', 'mpg', 'mp4', 'webm'];

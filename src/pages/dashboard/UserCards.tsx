@@ -1,25 +1,23 @@
 import { useEffect } from 'react';
-// material
-import { Container, Grid, Skeleton } from '@material-ui/core';
-// redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getUsers } from '../../redux/slices/user';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
+import { Container, Grid, Skeleton } from '@mui/material';
+
 import { UserCard } from '../../components/_dashboard/user/cards';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-
-// ----------------------------------------------------------------------
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
+import { getUsers } from '../../redux/slices/user';
+import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 const SkeletonLoad = (
   <>
     {[...Array(8)].map((_, index) => (
       <Grid item xs={12} sm={6} md={4} key={index}>
-        <Skeleton variant="rectangular" width="100%" sx={{ paddingTop: '115%', borderRadius: 2 }} />
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          sx={{ paddingTop: '115%', borderRadius: 2 }}
+        />
       </Grid>
     ))}
   </>
@@ -42,7 +40,7 @@ export default function UserCards() {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'Cards' }
+            { name: 'Cards' },
           ]}
         />
         <Grid container spacing={3}>

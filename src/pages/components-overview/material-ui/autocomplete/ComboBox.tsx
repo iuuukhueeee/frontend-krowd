@@ -1,6 +1,4 @@
-import { TextField, Autocomplete } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Autocomplete, TextField } from '@mui/material';
 
 type ComboBoxProps = {
   options: {
@@ -15,7 +13,9 @@ export default function ComboBox({ options }: ComboBoxProps) {
       fullWidth
       options={options}
       getOptionLabel={(option) => option.title}
-      renderInput={(params) => <TextField {...params} label="Combo box" margin="none" />}
+      renderInput={(params) => (
+        <TextField {...params} label="Combo box" margin="none" />
+      )}
     />
   );
 }

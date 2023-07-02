@@ -1,12 +1,9 @@
 import { forwardRef } from 'react';
 import { Fab, FabProps } from '@mui/material';
-// material
 import { useTheme } from '@mui/material/styles';
 
 //
 import { ButtonAnimate } from '../animate';
-
-// ----------------------------------------------------------------------
 
 interface MFabProps extends Omit<FabProps, 'color'> {
   color?:

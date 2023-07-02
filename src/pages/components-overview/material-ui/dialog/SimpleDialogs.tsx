@@ -1,21 +1,18 @@
 import { useState } from 'react';
-// material
 import AddIcon from '@material-ui/icons/Add';
 import PersonIcon from '@material-ui/icons/Person';
 import {
-  Box,
-  List,
   Avatar,
+  Box,
   Button,
   Dialog,
-  Typography,
   DialogTitle,
-  ListItemText,
+  List,
   ListItemAvatar,
-  ListItemButton
-} from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+  ListItemButton,
+  ListItemText,
+  Typography,
+} from '@mui/material';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 
@@ -51,7 +48,7 @@ export default function SimpleDialog() {
                 <Avatar
                   sx={{
                     color: 'info.main',
-                    backgroundColor: 'info.lighter'
+                    backgroundColor: 'info.lighter',
                   }}
                 >
                   <PersonIcon />

@@ -9,8 +9,6 @@ import { Theme } from '@mui/material';
 // @types
 import { ColorSchema } from '@/types/theme';
 
-// ----------------------------------------------------------------------
-
 export default function Alert(theme: Theme) {
   const isLight = theme.palette.mode === 'light';
 

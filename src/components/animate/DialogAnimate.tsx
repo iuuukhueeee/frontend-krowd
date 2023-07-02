@@ -1,11 +1,8 @@
-// material
 import { Box, Dialog, DialogProps, Paper } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 
 //
 import { varFadeInUp } from './variants';
-
-// ----------------------------------------------------------------------
 
 interface DialogAnimateProps extends DialogProps {
   animate?: object;

@@ -1,30 +1,31 @@
-// material
-import { useTheme, styled } from '@material-ui/core/styles';
-import { Stack, Box, Paper, Container, Typography, PaperProps } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+import {
+  Box,
+  Container,
+  Paper,
+  PaperProps,
+  Stack,
+  Typography,
+} from '@mui/material';
+import { styled, useTheme } from '@mui/material
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { m: '8px !important' }
+  '& > *': { m: '8px !important' },
 } as const;
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 function ShadowCard({ sx, title }: PaperProps) {
   return (
@@ -38,9 +39,9 @@ function ShadowCard({ sx, title }: PaperProps) {
         width: {
           xs: 'calc((100%/2) - 24px)',
           sm: 'calc((100%/4) - 24px)',
-          md: 'calc((100%/6) - 24px)'
+          md: 'calc((100%/6) - 24px)',
         },
-        ...sx
+        ...sx,
       }}
     >
       <Typography variant="subtitle1">{title}</Typography>
@@ -56,7 +57,14 @@ export default function FoundationShadows() {
     Object.entries(theme.customShadows).length - 6
   );
 
-  const colorShadows = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+  const colorShadows = [
+    'primary',
+    'secondary',
+    'info',
+    'success',
+    'warning',
+    'error',
+  ] as const;
 
   return (
     <RootStyle title="Foundations: Shadows | Minimal-UI">
@@ -65,13 +73,17 @@ export default function FoundationShadows() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Shadows"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Shadows' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Shadows' },
+            ]}
           />
         </Container>
       </Box>
@@ -80,13 +92,21 @@ export default function FoundationShadows() {
         <Stack spacing={5}>
           <Block title="System" sx={style}>
             {systemShadows.map((shadow, index) => (
-              <ShadowCard key={shadow} title={`z${index + 1}`} sx={{ boxShadow: shadow }} />
+              <ShadowCard
+                key={shadow}
+                title={`z${index + 1}`}
+                sx={{ boxShadow: shadow }}
+              />
             ))}
           </Block>
 
           <Block title="Customs" sx={style}>
             {customShadows.map((shadow) => (
-              <ShadowCard key={shadow[0]} title={shadow[0]} sx={{ boxShadow: shadow[1] }} />
+              <ShadowCard
+                key={shadow[0]}
+                title={shadow[0]}
+                sx={{ boxShadow: shadow[1] }}
+              />
             ))}
           </Block>
 
@@ -98,7 +118,7 @@ export default function FoundationShadows() {
                 sx={{
                   color: theme.palette[color].contrastText,
                   bgcolor: theme.palette[color].main,
-                  boxShadow: theme.customShadows[color]
+                  boxShadow: theme.customShadows[color],
                 }}
               />
             ))}

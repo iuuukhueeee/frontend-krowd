@@ -1,19 +1,16 @@
-// material
 import AlarmIcon from '@material-ui/icons/Alarm';
-import { Grid, Fab } from '@material-ui/core';
-// components
+import { Fab, Grid } from '@mui/material';
+
 import { MFab } from '../../../../components/@material-extend';
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { m: '8px !important' }
+  '& > *': { m: '8px !important' },
 } as const;
 
 export default function FloatingActionButton() {

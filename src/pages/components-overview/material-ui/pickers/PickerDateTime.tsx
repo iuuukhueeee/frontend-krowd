@@ -1,11 +1,13 @@
 import { useState } from 'react';
-// material
-import { TextField, Stack } from '@material-ui/core';
-import { DateTimePicker, MobileDateTimePicker, DesktopDateTimePicker } from '@material-ui/lab';
+import {
+  DateTimePicker,
+  DesktopDateTimePicker,
+  MobileDateTimePicker,
+} from '@material-ui/lab';
+import { Stack, TextField } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 export default function PickerDateTime() {
   const [value, setValue] = useState<Date | null>(new Date());
@@ -30,21 +32,27 @@ export default function PickerDateTime() {
           onChange={(newValue) => {
             setValueResponsive(newValue);
           }}
-          renderInput={(params) => <TextField {...params} fullWidth margin="normal" />}
+          renderInput={(params) => (
+            <TextField {...params} fullWidth margin="normal" />
+          )}
         />
         <DesktopDateTimePicker
           value={valueResponsive}
           onChange={(newValue) => {
             setValueResponsive(newValue);
           }}
-          renderInput={(params) => <TextField {...params} margin="normal" fullWidth />}
+          renderInput={(params) => (
+            <TextField {...params} margin="normal" fullWidth />
+          )}
         />
         <DateTimePicker
           value={valueResponsive}
           onChange={(newValue) => {
             setValueResponsive(newValue);
           }}
-          renderInput={(params) => <TextField {...params} margin="normal" fullWidth />}
+          renderInput={(params) => (
+            <TextField {...params} margin="normal" fullWidth />
+          )}
         />
       </Block>
     </Stack>

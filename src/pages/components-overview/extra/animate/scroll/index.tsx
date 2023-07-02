@@ -1,13 +1,12 @@
 import { useState } from 'react';
-// material
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid } from '@mui/material';
+
+import ControlPanel from '../ControlPanel';
+
+import ContainerView from './ContainerView';
 //
 import Toolbar from './Toolbar';
 import variantTypes from './types';
-import ControlPanel from '../ControlPanel';
-import ContainerView from './ContainerView';
-
-// ----------------------------------------------------------------------
 
 export default function ScrollView() {
   const [count, setCount] = useState(0);

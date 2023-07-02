@@ -1,6 +1,5 @@
 import { useEffect, useMemo } from 'react';
 import { Box } from '@mui/material';
-// material
 import {
   alpha,
   createStyles,
@@ -11,10 +10,7 @@ import {
 import { motion } from 'framer-motion';
 import NProgress from 'nprogress';
 
-//
 import Logo from './Logo';
-
-// ----------------------------------------------------------------------
 
 const nprogressStyle = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,8 +49,6 @@ const RootStyle = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   backgroundColor: theme.palette.background?.default,
 }));
-
-// ----------------------------------------------------------------------
 
 function ProgressBar() {
   nprogressStyle();

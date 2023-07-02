@@ -101,8 +101,6 @@ const CardIconStyle = styled('img')(({ theme }) => ({
   filter: shadowIcon(theme.palette.primary.main),
 }));
 
-// ----------------------------------------------------------------------
-
 export default function LandingMinimalHelps() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';

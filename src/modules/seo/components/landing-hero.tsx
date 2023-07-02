@@ -73,8 +73,6 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   },
 }));
 
-// ----------------------------------------------------------------------
-
 export default function LandingHero() {
   return (
     <>

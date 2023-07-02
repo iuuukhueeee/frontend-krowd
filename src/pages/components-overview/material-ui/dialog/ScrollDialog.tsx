@@ -1,16 +1,13 @@
-import { useState, useRef, useEffect } from 'react';
-// material
+import { useEffect, useRef, useState } from 'react';
 import {
   Button,
   Dialog,
-  DialogTitle,
-  DialogContent,
   DialogActions,
-  DialogContentText
-} from '@material-ui/core';
-import { DialogProps } from '@material-ui/core/Dialog';
-
-// ----------------------------------------------------------------------
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material';
+import { DialogProps } from '@mui/material/Dialog';
 
 export default function ScrollDialog() {
   const [open, setOpen] = useState(false);
@@ -38,7 +35,11 @@ export default function ScrollDialog() {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen('paper')} sx={{ mr: 2 }}>
+      <Button
+        variant="outlined"
+        onClick={handleClickOpen('paper')}
+        sx={{ mr: 2 }}
+      >
         scroll=paper
       </Button>
       <Button variant="outlined" onClick={handleClickOpen('body')}>

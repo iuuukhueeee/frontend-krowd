@@ -1,7 +1,5 @@
 import { FormikProps } from 'formik';
 
-// ----------------------------------------------------------------------
-
 export type NewPostFormValues = {
   title: string;
   description: string;

@@ -14,8 +14,6 @@ import AuthLayout from '../../../layouts/AuthLayout';
 // routes
 import { PATH_AUTH } from '../../../routes/paths';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     display: 'flex',
@@ -40,8 +38,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
   justifyContent: 'center',
   padding: theme.spacing(12, 0),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function Register() {
   return (

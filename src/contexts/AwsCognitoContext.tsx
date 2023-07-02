@@ -1,38 +1,46 @@
-import { createContext, ReactNode, useCallback, useEffect, useReducer } from 'react';
 import {
-  CognitoUser,
-  CognitoUserPool,
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useReducer,
+} from 'react';
+import {
   AuthenticationDetails,
+  CognitoUser,
+  CognitoUserAttribute,
+  CognitoUserPool,
   CognitoUserSession,
-  CognitoUserAttribute
 } from 'amazon-cognito-identity-js';
-// utils
-import axios from '../utils/axios';
-// routes
-import { PATH_AUTH } from '../routes/paths';
+
 // @types
-import { ActionMap, AuthState, AuthUser, AWSCognitoContextType } from '../@types/authentication';
+import {
+  ActionMap,
+  AuthState,
+  AuthUser,
+  AWSCognitoContextType,
+} from '../@types/authentication';
 //
 import { cognitoConfig } from '../config';
-
-// ----------------------------------------------------------------------
+import { PATH_AUTH } from '../routes/paths';
+import axios from '../utils/axios';
 
 // CAUTION: User Cognito is slily difference from firebase, so be sure to read the doc carefully.
 
 export const UserPool = new CognitoUserPool({
   UserPoolId: cognitoConfig.userPoolId || '',
-  ClientId: cognitoConfig.clientId || ''
+  ClientId: cognitoConfig.clientId || '',
 });
 
 const initialState: AuthState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 enum Types {
   auth = 'AUTHENTICATE',
-  logout = 'LOGOUT'
+  logout = 'LOGOUT',
 }
 
 type AwsAuthPayload = {
@@ -52,14 +60,14 @@ const reducer = (state: AuthState, action: AwsActions) => {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   }
   if (action.type === 'LOGOUT') {
     return {
       ...state,
       isAuthenticated: false,
-      user: null
+      user: null,
     };
   }
   return state;
@@ -94,32 +102,34 @@ function AuthProvider({ children }: { children: ReactNode }) {
       new Promise((resolve, reject) => {
         const user = UserPool.getCurrentUser();
         if (user) {
-          user.getSession(async (err: Error | null, session: CognitoUserSession | null) => {
-            if (err) {
-              reject(err);
-            } else {
-              const attributes = await getUserAttributes(user);
-              const token = session?.getIdToken().getJwtToken();
-              // use the token or Bearer depend on the wait BE handle, by default amplify API only need to token.
-              axios.defaults.headers.common.Authorization = token;
-              dispatch({
-                type: Types.auth,
-                payload: { isAuthenticated: true, user: attributes }
-              });
-              resolve({
-                user,
-                session,
-                headers: { Authorization: token }
-              });
+          user.getSession(
+            async (err: Error | null, session: CognitoUserSession | null) => {
+              if (err) {
+                reject(err);
+              } else {
+                const attributes = await getUserAttributes(user);
+                const token = session?.getIdToken().getJwtToken();
+                // use the token or Bearer depend on the wait BE handle, by default amplify API only need to token.
+                axios.defaults.headers.common.Authorization = token;
+                dispatch({
+                  type: Types.auth,
+                  payload: { isAuthenticated: true, user: attributes },
+                });
+                resolve({
+                  user,
+                  session,
+                  headers: { Authorization: token },
+                });
+              }
             }
-          });
+          );
         } else {
           dispatch({
             type: Types.auth,
             payload: {
               isAuthenticated: false,
-              user: null
-            }
+              user: null,
+            },
           });
         }
       }),
@@ -134,8 +144,8 @@ function AuthProvider({ children }: { children: ReactNode }) {
         type: Types.auth,
         payload: {
           isAuthenticated: false,
-          user: null
-        }
+          user: null,
+        },
       });
     }
   }, [getSession]);
@@ -152,12 +162,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
       new Promise((resolve, reject) => {
         const user = new CognitoUser({
           Username: email,
-          Pool: UserPool
+          Pool: UserPool,
         });
 
         const authDetails = new AuthenticationDetails({
           Username: email,
-          Password: password
+          Password: password,
         });
 
         user.authenticateUser(authDetails, {
@@ -171,13 +181,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
           newPasswordRequired: () => {
             // Handle this on login page for update password.
             resolve({ message: 'newPasswordRequired' });
-          }
+          },
         });
       }),
     [getSession]
   );
 
-  // same thing here
   const logout = () => {
     const user = UserPool.getCurrentUser();
     if (user) {
@@ -186,14 +195,22 @@ function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const register = (email: string, password: string, firstName: string, lastName: string) =>
+  const register = (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) =>
     new Promise((resolve, reject) => {
       UserPool.signUp(
         email,
         password,
         [
           new CognitoUserAttribute({ Name: 'email', Value: email }),
-          new CognitoUserAttribute({ Name: 'name', Value: `${firstName} ${lastName}` })
+          new CognitoUserAttribute({
+            Name: 'name',
+            Value: `${firstName} ${lastName}`,
+          }),
         ],
         [],
         async (err) => {
@@ -219,13 +236,13 @@ function AuthProvider({ children }: { children: ReactNode }) {
         user: {
           displayName: state?.user?.name || 'Minimals',
           role: 'admin',
-          ...state.user
+          ...state.user,
         },
         login,
         register,
         logout,
         updateProfile,
-        resetPassword
+        resetPassword,
       }}
     >
       {children}

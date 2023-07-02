@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 
-// ----------------------------------------------------------------------
-
 export default function useOffSetTop(top: number) {
   const [offsetTop, setOffSetTop] = useState(false);
   const isTop = top || 100;
@@ -22,5 +20,4 @@ export default function useOffSetTop(top: number) {
   return offsetTop;
 }
 
-// Usage
 // const offset = useOffSetTop(100);

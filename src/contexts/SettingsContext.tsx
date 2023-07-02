@@ -7,20 +7,14 @@ import {
   ThemeDirection,
   ThemeMode,
 } from '../@types/settings';
-// hooks
 import useLocalStorage from '../hooks/useLocalStorage';
-// theme
 import palette from '../theme/palette';
 
-// ----------------------------------------------------------------------
-
 const PRIMARY_COLOR = [
-  // DEFAULT
   {
     name: 'default',
     ...palette.light.primary,
   },
-  // PURPLE
   {
     name: 'purple',
     lighter: '#EBD6FD',
@@ -30,7 +24,6 @@ const PRIMARY_COLOR = [
     darker: '#200A69',
     contrastText: '#fff',
   },
-  // CYAN
   {
     name: 'cyan',
     lighter: '#D1FFFC',
@@ -40,7 +33,6 @@ const PRIMARY_COLOR = [
     darker: '#053D7A',
     contrastText: palette.light.grey[800],
   },
-  // BLUE
   {
     name: 'blue',
     lighter: '#CCDFFF',
@@ -50,7 +42,6 @@ const PRIMARY_COLOR = [
     darker: '#00137A',
     contrastText: '#fff',
   },
-  // ORANGE
   {
     name: 'orange',
     lighter: '#FEF4D4',
@@ -60,7 +51,6 @@ const PRIMARY_COLOR = [
     darker: '#793908',
     contrastText: palette.light.grey[800],
   },
-  // RED
   {
     name: 'red',
     lighter: '#FFE3D5',
@@ -163,18 +153,14 @@ function SettingsProvider({ children }: SettingsProviderProps) {
     <SettingsContext.Provider
       value={{
         ...settings,
-        // Mode
         onChangeMode,
-        // Direction
         onChangeDirection,
-        // Color
         onChangeColor,
         setColor: SetColor(settings.themeColor),
         colorOption: PRIMARY_COLOR.map((color) => ({
           name: color.name,
           value: color.main,
         })),
-        // Stretch
         onToggleStretch,
       }}
     >

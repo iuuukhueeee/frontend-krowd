@@ -1,10 +1,7 @@
 import { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
-// material
 import { Box, BoxProps } from '@mui/material';
 import { motion, MotionProps, useAnimation } from 'framer-motion';
-
-// ----------------------------------------------------------------------
 
 type Props = BoxProps & MotionProps;
 

@@ -1,23 +1,18 @@
 import { Link as RouterLink } from 'react-router-dom';
-// material
-import { styled } from '@material-ui/core/styles';
-import { Button, Typography, Container } from '@material-ui/core';
-// components
-import Page from '../components/Page';
+import { Button, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material
+
 //
 import { MaintenanceIllustration } from '../assets';
-
-// ----------------------------------------------------------------------
+import Page from '../components/Page';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   minHeight: '100%',
   display: 'flex',
   alignItems: 'center',
   paddingTop: theme.spacing(15),
-  paddingBottom: theme.spacing(10)
+  paddingBottom: theme.spacing(10),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function Maintenance() {
   return (

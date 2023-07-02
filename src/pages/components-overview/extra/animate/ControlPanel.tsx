@@ -1,17 +1,14 @@
-// material
 import {
   Box,
-  Radio,
-  Paper,
-  Typography,
-  RadioGroup,
   FormControlLabel,
-  PaperProps
-} from '@material-ui/core';
-// components
-import Scrollbar from '../../../../components/Scrollbar';
+  Paper,
+  PaperProps,
+  Radio,
+  RadioGroup,
+  Typography,
+} from '@mui/material';
 
-// ----------------------------------------------------------------------
+import Scrollbar from '../../../../components/Scrollbar';
 
 interface ControlPanelProps extends PaperProps {
   variantTypes: {
@@ -26,15 +23,22 @@ export default function ControlPanel({
   variantTypes,
   selectVariant,
   onChangeVariant,
-  sx
+  sx,
 }: ControlPanelProps) {
   return (
     <Paper variant="outlined" sx={{ height: 480, ...sx }}>
       <Scrollbar>
-        <RadioGroup value={selectVariant} onChange={onChangeVariant} sx={{ px: 1, py: 1 }}>
+        <RadioGroup
+          value={selectVariant}
+          onChange={onChangeVariant}
+          sx={{ px: 1, py: 1 }}
+        >
           {variantTypes.map((variant) => (
             <Box key={variant.type} sx={{ my: 1.5 }}>
-              <Typography variant="overline" sx={{ px: 1, mb: 1, display: 'block' }}>
+              <Typography
+                variant="overline"
+                sx={{ px: 1, mb: 1, display: 'block' }}
+              >
                 {variant.type}
               </Typography>
               {variant.values.map((value) => (
@@ -52,9 +56,9 @@ export default function ControlPanel({
                     borderRadius: 0.75,
                     color: 'text.secondary',
                     ...(selectVariant === value && {
-                      color: 'warning.contrastText'
+                      color: 'warning.contrastText',
                     }),
-                    ...(selectVariant === value && { bgcolor: 'warning.main' })
+                    ...(selectVariant === value && { bgcolor: 'warning.main' }),
                   }}
                 />
               ))}

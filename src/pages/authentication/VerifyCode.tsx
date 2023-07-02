@@ -1,27 +1,20 @@
-import { Icon } from '@iconify/react';
 import { Link as RouterLink } from 'react-router-dom';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Button, Link, Container, Typography } from '@material-ui/core';
-// layouts
-import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
-// routes
-import { PATH_AUTH } from '../../routes/paths';
-// components
-import Page from '../../components/Page';
-import { VerifyCodeForm } from '../../components/authentication/verify-code';
+import { Icon } from '@iconify/react';
+import { Box, Button, Container, Link, Typography } from '@mui/material';
+import { styled } from '@mui/material
 
-// ----------------------------------------------------------------------
+import { VerifyCodeForm } from '../../components/authentication/verify-code';
+import Page from '../../components/Page';
+import LogoOnlyLayout from '../../layouts/LogoOnlyLayout';
+import { PATH_AUTH } from '../../routes/paths';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   display: 'flex',
   minHeight: '100%',
   alignItems: 'center',
-  padding: theme.spacing(12, 0)
+  padding: theme.spacing(12, 0),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function VerifyCode() {
   return (
@@ -44,8 +37,8 @@ export default function VerifyCode() {
             Please check your email!
           </Typography>
           <Typography sx={{ color: 'text.secondary' }}>
-            We have emailed a 6-digit confirmation code to acb@domain, please enter the code in
-            below box to verify your email.
+            We have emailed a 6-digit confirmation code to acb@domain, please
+            enter the code in below box to verify your email.
           </Typography>
 
           <Box sx={{ mt: 5, mb: 3 }}>

@@ -1,16 +1,14 @@
-// material
-import { ButtonGroup, Button, Grid } from '@material-ui/core';
+import { Button, ButtonGroup, Grid } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { m: '8px !important' }
+  '& > *': { m: '8px !important' },
 } as const;
 
 export default function ButtonGroups() {

@@ -1,60 +1,84 @@
 const variantTypes = [
   {
     type: 'slide in',
-    values: ['slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight']
+    values: ['slideInUp', 'slideInDown', 'slideInLeft', 'slideInRight'],
   },
   {
     type: 'slide out',
-    values: ['slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight']
+    values: ['slideOutUp', 'slideOutDown', 'slideOutLeft', 'slideOutRight'],
   },
   {
     type: 'fade in',
-    values: ['fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight']
+    values: ['fadeIn', 'fadeInUp', 'fadeInDown', 'fadeInLeft', 'fadeInRight'],
   },
   {
     type: 'fade out',
-    values: ['fadeOut', 'fadeOutUp', 'fadeOutDown', 'fadeOutLeft', 'fadeOutRight']
+    values: [
+      'fadeOut',
+      'fadeOutUp',
+      'fadeOutDown',
+      'fadeOutLeft',
+      'fadeOutRight',
+    ],
   },
   {
     type: 'zoom in',
-    values: ['zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight']
+    values: ['zoomIn', 'zoomInUp', 'zoomInDown', 'zoomInLeft', 'zoomInRight'],
   },
   {
     type: 'zoom out',
-    values: ['zoomOut', 'zoomOutUp', 'zoomOutDown', 'zoomOutLeft', 'zoomOutRight']
+    values: [
+      'zoomOut',
+      'zoomOutUp',
+      'zoomOutDown',
+      'zoomOutLeft',
+      'zoomOutRight',
+    ],
   },
   {
     type: 'bounce in',
-    values: ['bounceIn', 'bounceInUp', 'bounceInDown', 'bounceInLeft', 'bounceInRight']
+    values: [
+      'bounceIn',
+      'bounceInUp',
+      'bounceInDown',
+      'bounceInLeft',
+      'bounceInRight',
+    ],
   },
   {
     type: 'bounce out',
-    values: ['bounceOut', 'bounceOutUp', 'bounceOutDown', 'bounceOutLeft', 'bounceOutRight']
+    values: [
+      'bounceOut',
+      'bounceOutUp',
+      'bounceOutDown',
+      'bounceOutLeft',
+      'bounceOutRight',
+    ],
   },
   {
     type: 'flip in',
-    values: ['flipInX', 'flipInY']
+    values: ['flipInX', 'flipInY'],
   },
   {
     type: 'flip out',
-    values: ['flipOutX', 'flipOutY']
+    values: ['flipOutX', 'flipOutY'],
   },
   {
     type: 'scale in',
-    values: ['scaleInX', 'scaleInY']
+    values: ['scaleInX', 'scaleInY'],
   },
   {
     type: 'scale out',
-    values: ['scaleOutX', 'scaleOutY']
+    values: ['scaleOutX', 'scaleOutY'],
   },
   {
     type: 'rotate in',
-    values: ['rotateIn']
+    values: ['rotateIn'],
   },
   {
     type: 'rotate out',
-    values: ['rotateOut']
-  }
+    values: ['rotateOut'],
+  },
 ];
 
 export default variantTypes;

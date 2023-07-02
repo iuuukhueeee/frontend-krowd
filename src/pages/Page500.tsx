@@ -1,22 +1,17 @@
 import { Link as RouterLink } from 'react-router-dom';
-import { styled } from '@material-ui/core/styles';
-// material
-import { Box, Button, Typography, Container } from '@material-ui/core';
-// components
-import Page from '../components/Page';
-import { SeverErrorIllustration } from '../assets';
+import { Box, Button, Container, Typography } from '@mui/material';
+import { styled } from '@mui/material
 
-// ----------------------------------------------------------------------
+import { SeverErrorIllustration } from '../assets';
+import Page from '../components/Page';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   display: 'flex',
   minHeight: '100%',
   alignItems: 'center',
   paddingTop: theme.spacing(15),
-  paddingBottom: theme.spacing(10)
+  paddingBottom: theme.spacing(10),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function Page500() {
   return (
@@ -32,7 +27,12 @@ export default function Page500() {
 
           <SeverErrorIllustration sx={{ height: 260, my: { xs: 5, sm: 10 } }} />
 
-          <Button to="/" size="large" variant="contained" component={RouterLink}>
+          <Button
+            to="/"
+            size="large"
+            variant="contained"
+            component={RouterLink}
+          >
             Go to Home
           </Button>
         </Box>

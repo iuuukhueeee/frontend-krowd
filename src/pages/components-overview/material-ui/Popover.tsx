@@ -1,29 +1,30 @@
 import { useState } from 'react';
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Stack, Button, Popover, Container, Typography } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+import {
+  Box,
+  Button,
+  Container,
+  Popover,
+  Stack,
+  Typography,
+} from '@mui/material';
+import { styled } from '@mui/material
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 const style = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
-
-// ----------------------------------------------------------------------
 
 export default function PopoversComponent() {
   const [click, setCLick] = useState<HTMLButtonElement | null>(null);
@@ -37,7 +38,9 @@ export default function PopoversComponent() {
     setCLick(null);
   };
 
-  const handleHoverOpen = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+  const handleHoverOpen = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>
+  ) => {
     setHover(event.currentTarget);
   };
   const handleHoverClose = () => {
@@ -51,13 +54,17 @@ export default function PopoversComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Popover"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Popover' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Popover' },
+            ]}
             moreLink="https://next.material-ui.com/components/popover"
           />
         </Container>
@@ -75,11 +82,11 @@ export default function PopoversComponent() {
               onClose={handleClose}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'center'
+                horizontal: 'center',
               }}
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'center'
+                horizontal: 'center',
               }}
             >
               <Box sx={{ p: 2, maxWidth: 280 }}>
@@ -87,7 +94,8 @@ export default function PopoversComponent() {
                   Etiam feugiat lorem non metus
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.
+                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit
+                  ornare lobortis.
                 </Typography>
               </Box>
             </Popover>
@@ -108,16 +116,16 @@ export default function PopoversComponent() {
               anchorEl={hover}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'left'
+                horizontal: 'left',
               }}
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'left'
+                horizontal: 'left',
               }}
               onClose={handleHoverClose}
               disableRestoreFocus
               sx={{
-                pointerEvents: 'none'
+                pointerEvents: 'none',
               }}
             >
               <Box sx={{ p: 2, maxWidth: 280 }}>
@@ -125,7 +133,8 @@ export default function PopoversComponent() {
                   Etiam feugiat lorem non metus
                 </Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit ornare lobortis.
+                  Fusce vulputate eleifend sapien. Curabitur at lacus ac velit
+                  ornare lobortis.
                 </Typography>
               </Box>
             </Popover>

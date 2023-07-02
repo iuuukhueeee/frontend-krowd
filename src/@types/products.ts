@@ -1,7 +1,5 @@
 import { FormikProps } from 'formik';
 
-// ----------------------------------------------------------------------
-
 export type PaymentType = 'paypal' | 'credit_card' | 'cash';
 
 export type ProductStatus = 'sale' | 'new' | '';
@@ -41,7 +39,7 @@ export type Product = {
   price: number;
   code: string;
   sku: string;
-  tags: String[];
+  tags: string[];
   priceSale: number | null;
   totalRating: number;
   totalReview: number;

@@ -1,34 +1,36 @@
-import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
-import { filter, includes, orderBy } from 'lodash';
-// material
-import { Backdrop, Container, Typography, CircularProgress, Stack } from '@material-ui/core';
-// redux
-import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts, filterProducts } from '../../redux/slices/product';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// utils
-import fakeRequest from '../../utils/fakeRequest';
-// @types
-import { Product, ProductState, ProductFilter } from '../../@types/products';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import {
-  ShopTagFiltered,
-  ShopProductSort,
-  ShopProductList,
-  ShopFilterSidebar
-} from '../../components/_dashboard/e-commerce/shop';
+  Backdrop,
+  CircularProgress,
+  Container,
+  Stack,
+  Typography,
+} from '@mui/material';
+import { useFormik } from 'formik';
+import { filter, includes, orderBy } from 'lodash';
+
+// @types
+import { Product, ProductFilter, ProductState } from '../../@types/products';
 import CartWidget from '../../components/_dashboard/e-commerce/CartWidget';
+import {
+  ShopFilterSidebar,
+  ShopProductList,
+  ShopProductSort,
+  ShopTagFiltered,
+} from '../../components/_dashboard/e-commerce/shop';
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
+import { filterProducts, getProducts } from '../../redux/slices/product';
+import { useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
+import fakeRequest from '../../utils/fakeRequest';
 
-// ----------------------------------------------------------------------
-
-function applyFilter(products: Product[], sortBy: string | null, filters: ProductFilter) {
-  // SORT BY
+function applyFilter(
+  products: Product[],
+  sortBy: string | null,
+  filters: ProductFilter
+) {
   if (sortBy === 'featured') {
     products = orderBy(products, ['sold'], ['desc']);
   }
@@ -41,12 +43,16 @@ function applyFilter(products: Product[], sortBy: string | null, filters: Produc
   if (sortBy === 'priceAsc') {
     products = orderBy(products, ['price'], ['asc']);
   }
-  // FILTER PRODUCTS
   if (filters.gender.length > 0) {
-    products = filter(products, (_product) => includes(filters.gender, _product.gender));
+    products = filter(products, (_product) =>
+      includes(filters.gender, _product.gender)
+    );
   }
   if (filters.category !== 'All') {
-    products = filter(products, (_product) => _product.category === filters.category);
+    products = filter(
+      products,
+      (_product) => _product.category === filters.category
+    );
   }
   if (filters.colors.length > 0) {
     products = filter(products, (_product) =>
@@ -94,7 +100,7 @@ export default function EcommerceShop() {
       category: filters.category,
       colors: filters.colors,
       priceRange: filters.priceRange,
-      rating: filters.rating
+      rating: filters.rating,
     },
     onSubmit: async (values, { setSubmitting }) => {
       try {
@@ -104,10 +110,11 @@ export default function EcommerceShop() {
         console.error(error);
         setSubmitting(false);
       }
-    }
+    },
   });
 
-  const { values, resetForm, handleSubmit, isSubmitting, initialValues } = formik;
+  const { values, resetForm, handleSubmit, isSubmitting, initialValues } =
+    formik;
 
   useEffect(() => {
     dispatch(getProducts());
@@ -145,9 +152,9 @@ export default function EcommerceShop() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root
+              href: PATH_DASHBOARD.eCommerce.root,
             },
-            { name: 'Shop' }
+            { name: 'Shop' },
           ]}
         />
 
@@ -186,7 +193,10 @@ export default function EcommerceShop() {
           </Stack>
         </Stack>
 
-        <ShopProductList products={filteredProducts} isLoad={!filteredProducts && !initialValues} />
+        <ShopProductList
+          products={filteredProducts}
+          isLoad={!filteredProducts && !initialValues}
+        />
         <CartWidget />
       </Container>
     </Page>

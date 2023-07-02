@@ -1,20 +1,20 @@
-// material
-import { styled } from '@material-ui/core/styles';
-import { Grid, Container, Typography } from '@material-ui/core';
-// components
-import Page from '../components/Page';
-import { FaqsHero, FaqsCategory, FaqsList, FaqsForm } from '../components/_external-pages/faqs';
+import { Container, Grid, Typography } from '@mui/material';
+import { styled } from '@mui/material
 
-// ----------------------------------------------------------------------
+import {
+  FaqsCategory,
+  FaqsForm,
+  FaqsHero,
+  FaqsList,
+} from '../components/_external-pages/faqs';
+import Page from '../components/Page';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(8),
   [theme.breakpoints.up('md')]: {
-    paddingTop: theme.spacing(11)
-  }
+    paddingTop: theme.spacing(11),
+  },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function Faqs() {
   return (

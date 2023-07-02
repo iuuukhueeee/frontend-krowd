@@ -47,7 +47,7 @@ export enum Type {
   Background = 'background',
   Fill = 'fill',
   Line = 'line',
-  Symbol = 'symbol'
+  Symbol = 'symbol',
 }
 
 export type TextSize = LineGapWidth | number;
@@ -72,7 +72,7 @@ export interface Paint {
 }
 
 export enum Source {
-  Mapbox = 'mapbox'
+  Mapbox = 'mapbox',
 }
 
 export interface Metadata {

@@ -1,14 +1,25 @@
 /* eslint-disable import/no-duplicates */
-import { createContext, ReactNode, useEffect, useReducer, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useEffect,
+  useReducer,
+  useState,
+} from 'react';
 import firebase from 'firebase/app';
+
 import 'firebase/auth';
 import 'firebase/firestore';
+
 // @types
-import { ActionMap, AuthState, AuthUser, FirebaseContextType } from '../@types/authentication';
+import {
+  ActionMap,
+  AuthState,
+  AuthUser,
+  FirebaseContextType,
+} from '../@types/authentication';
 //
 import { firebaseConfig } from '../config';
-
-// ----------------------------------------------------------------------
 
 const ADMIN_EMAILS = ['demo@minimals.cc'];
 
@@ -20,11 +31,11 @@ if (!firebase.apps.length) {
 const initialState: AuthState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 enum Types {
-  Initial = 'INITIALISE'
+  Initial = 'INITIALISE',
 }
 
 type FirebaseAuthPayload = {
@@ -34,7 +45,8 @@ type FirebaseAuthPayload = {
   };
 };
 
-type FirebaseActions = ActionMap<FirebaseAuthPayload>[keyof ActionMap<FirebaseAuthPayload>];
+type FirebaseActions =
+  ActionMap<FirebaseAuthPayload>[keyof ActionMap<FirebaseAuthPayload>];
 
 const reducer = (state: AuthState, action: FirebaseActions) => {
   if (action.type === 'INITIALISE') {
@@ -43,7 +55,7 @@ const reducer = (state: AuthState, action: FirebaseActions) => {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   }
 
@@ -53,7 +65,9 @@ const reducer = (state: AuthState, action: FirebaseActions) => {
 const AuthContext = createContext<FirebaseContextType | null>(null);
 
 function AuthProvider({ children }: { children: ReactNode }) {
-  const [profile, setProfile] = useState<firebase.firestore.DocumentData | undefined>();
+  const [profile, setProfile] = useState<
+    firebase.firestore.DocumentData | undefined
+  >();
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(
@@ -74,12 +88,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
           dispatch({
             type: Types.Initial,
-            payload: { isAuthenticated: true, user }
+            payload: { isAuthenticated: true, user },
           });
         } else {
           dispatch({
             type: Types.Initial,
-            payload: { isAuthenticated: false, user: null }
+            payload: { isAuthenticated: false, user: null },
           });
         }
       }),
@@ -104,7 +118,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
     return firebase.auth().signInWithPopup(provider);
   };
 
-  const register = (email: string, password: string, firstName: string, lastName: string) =>
+  const register = (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string
+  ) =>
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -116,7 +135,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
           .set({
             uid: res.user?.uid,
             email,
-            displayName: `${firstName} ${lastName}`
+            displayName: `${firstName} ${lastName}`,
           });
       });
 
@@ -148,7 +167,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
           city: profile?.city || '',
           zipCode: profile?.zipCode || '',
           about: profile?.about || '',
-          isPublic: profile?.isPublic || false
+          isPublic: profile?.isPublic || false,
         },
         login,
         register,
@@ -157,7 +176,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
         loginWithTwitter,
         logout,
         resetPassword,
-        updateProfile: () => {}
+        updateProfile: () => {},
       }}
     >
       {children}

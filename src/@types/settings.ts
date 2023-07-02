@@ -1,8 +1,12 @@
-// ----------------------------------------------------------------------
-
 export type ThemeMode = 'light' | 'dark';
 export type ThemeDirection = 'rtl' | 'ltr';
-export type ThemeColor = 'default' | 'purple' | 'cyan' | 'blue' | 'orange' | 'red';
+export type ThemeColor =
+  | 'default'
+  | 'purple'
+  | 'cyan'
+  | 'blue'
+  | 'orange'
+  | 'red';
 
 export type SettingsContextProps = {
   themeMode: ThemeMode;

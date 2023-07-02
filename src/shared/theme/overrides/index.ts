@@ -24,7 +24,7 @@ import IconButton from './IconButton';
 import Input from './Input';
 import Link from './Link';
 import Lists from './Lists';
-import LoadingButton from './LoadingButton';
+import LoadingButton from './loading-button';
 import Menu from './Menu';
 import Pagination from './Pagination';
 import Paper from './Paper';
@@ -36,16 +36,16 @@ import Rating from './Rating';
 import Select from './Select';
 import Skeleton from './Skeleton';
 import Slider from './Slider';
-import Snackbar from './Snackbar';
+import Snackbar from './snack-bar';
 import Stepper from './Stepper';
-import SvgIcon from './SvgIcon';
+import SvgIcon from './svg-icon';
 import Switch from './Switch';
 import Table from './Table';
 import Tabs from './Tabs';
 import Timeline from './Timeline';
-import ToggleButton from './ToggleButton';
+import ToggleButton from './toggle-button';
 import Tooltip from './Tooltip';
-import TreeView from './TreeView';
+import TreeView from './tree-view';
 import Typography from './Typography';
 
 // ----------------------------------------------------------------------
@@ -64,17 +64,17 @@ export default function ComponentsOverrides(theme: Theme) {
     Badge(),
     Lists(theme),
     Table(theme),
-    Paper(theme),
+    Paper(),
     Alert(theme),
     Switch(theme),
-    Select(theme),
+    Select(),
     Button(theme),
     Rating(theme),
     Dialog(theme),
     Avatar(theme),
     Slider(theme),
     Drawer(theme),
-    Pickers(theme),
+    Pickers(),
     Stepper(theme),
     Tooltip(theme),
     Popover(theme),
@@ -97,6 +97,6 @@ export default function ComponentsOverrides(theme: Theme) {
     Autocomplete(theme),
     ControlLabel(theme),
     ToggleButton(theme),
-    LoadingButton(theme)
+    LoadingButton()
   );
 }

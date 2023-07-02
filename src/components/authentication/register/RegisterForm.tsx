@@ -11,8 +11,6 @@ import {
   TextField,
 } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 type InitialValues = {
   email: string;
   password: string;

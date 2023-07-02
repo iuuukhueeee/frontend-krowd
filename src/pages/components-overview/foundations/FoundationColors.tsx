@@ -1,35 +1,52 @@
-import { Icon } from '@iconify/react';
 import { useState } from 'react';
-import { useSnackbar } from 'notistack5';
-import copyFill from '@iconify/icons-eva/copy-fill';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-// material
-import { useTheme, hexToRgb, styled } from '@material-ui/core/styles';
-import { Box, Card, Tooltip, Container, Typography, IconButton } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import copyFill from '@iconify/icons-eva/copy-fill';
+import { Icon } from '@iconify/react';
+import {
+  Box,
+  Card,
+  Container,
+  IconButton,
+  Tooltip,
+  Typography,
+} from '@mui/material';
+import { hexToRgb, styled, useTheme } from '@mui/material
+import { useSnackbar } from 'notistack5';
 
-// ----------------------------------------------------------------------
+import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 
 const COLORS = ['primary', 'info', 'success', 'warning', 'error'] as const;
-const COLORS_VARIATIONS = ['lighter', 'light', 'main', 'dark', 'darker'] as const;
-const GREY_VARIATIONS = ['100', '200', '300', '400', '500', '600', '700', '800', '900'] as const;
+const COLORS_VARIATIONS = [
+  'lighter',
+  'light',
+  'main',
+  'dark',
+  'darker',
+] as const;
+const GREY_VARIATIONS = [
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+  '800',
+  '900',
+] as const;
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 const RowStyle = styled('div')(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  margin: theme.spacing(1.5, -1.5, 0)
+  margin: theme.spacing(1.5, -1.5, 0),
 }));
-
-// ----------------------------------------------------------------------
 
 type ColorCardProps = {
   hexColor: string;
@@ -49,8 +66,8 @@ function ColorCard({ hexColor, variation, onCopy }: ColorCardProps) {
           xs: '100%',
           sm: 'calc((100%/2) - 24px)',
           md: 'calc((100%/4) - 24px)',
-          lg: 'calc((100%/5) - 24px)'
-        }
+          lg: 'calc((100%/5) - 24px)',
+        },
       }}
     >
       <CopyToClipboard text={hexColor} onCopy={onCopy}>
@@ -60,7 +77,7 @@ function ColorCard({ hexColor, variation, onCopy }: ColorCardProps) {
               top: 8,
               right: 8,
               position: 'absolute',
-              color: theme.palette.getContrastText(hexColor)
+              color: theme.palette.getContrastText(hexColor),
             }}
           >
             <Icon icon={copyFill} width={20} height={20} />
@@ -75,13 +92,19 @@ function ColorCard({ hexColor, variation, onCopy }: ColorCardProps) {
           {variation}
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', mt: 1.5, mb: 1 }}>
-          <Typography variant="overline" sx={{ width: 56, color: 'text.secondary' }}>
+          <Typography
+            variant="overline"
+            sx={{ width: 56, color: 'text.secondary' }}
+          >
             Hex
           </Typography>
           <Typography variant="body2">{hexColor}</Typography>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Typography variant="overline" sx={{ width: 56, color: 'text.secondary' }}>
+          <Typography
+            variant="overline"
+            sx={{ width: 56, color: 'text.secondary' }}
+          >
             Rgb
           </Typography>
           <Typography variant="body2">
@@ -112,16 +135,20 @@ export default function FoundationColors() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Color"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Color' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Color' },
+            ]}
             moreLink={[
               'https://next.material-ui.com/customization/color',
-              'https://colors.eva.design'
+              'https://colors.eva.design',
             ]}
           />
         </Container>

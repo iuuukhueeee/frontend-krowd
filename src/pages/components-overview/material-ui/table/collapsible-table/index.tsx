@@ -1,18 +1,16 @@
-// material
 import {
   Table,
-  TableRow,
-  TableHead,
   TableBody,
   TableCell,
-  TableContainer
-} from '@material-ui/core';
-// components
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@mui/material';
+
 import Scrollbar from '../../../../../components/Scrollbar';
+
 //
 import CollapsibleTableRow from './CollapsibleTableRow';
-
-// ----------------------------------------------------------------------
 
 export function createData(
   name: string,
@@ -33,14 +31,14 @@ export function createData(
       {
         date: '2020-01-05',
         customerId: '11091700',
-        amount: 3
+        amount: 3,
       },
       {
         date: '2020-01-02',
         customerId: 'Anonymous',
-        amount: 1
-      }
-    ]
+        amount: 1,
+      },
+    ],
   };
 }
 
@@ -49,7 +47,7 @@ const COLLAPSIBLE_TABLE = [
   createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4.99),
   createData('Eclair', 262, 16.0, 24, 6.0, 3.79),
   createData('Cupcake', 305, 3.7, 67, 4.3, 2.5),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5)
+  createData('Gingerbread', 356, 16.0, 49, 3.9, 1.5),
 ];
 
 export default function CollapsibleTable() {

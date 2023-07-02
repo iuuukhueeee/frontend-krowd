@@ -1,22 +1,19 @@
-import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import arrowIosBackFill from '@iconify/icons-eva/arrow-ios-back-fill';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
-// material
+import { Icon } from '@iconify/react';
 import {
-  Card,
-  List,
-  Grid,
   Button,
-  Divider,
-  Checkbox,
+  Card,
   CardHeader,
-  ListItemText,
+  Checkbox,
+  Divider,
+  Grid,
+  List,
+  ListItemButton,
   ListItemIcon,
-  ListItemButton
-} from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+  ListItemText,
+} from '@mui/material';
 
 function not(a: number[], b: number[]) {
   return a.filter((value) => b.indexOf(value) === -1);
@@ -50,7 +47,8 @@ export default function EnhancedTransferList() {
     setChecked(newChecked);
   };
 
-  const numberOfChecked = (items: number[]) => intersection(checked, items).length;
+  const numberOfChecked = (items: number[]) =>
+    intersection(checked, items).length;
 
   const handleToggleAll = (items: number[]) => () => {
     if (numberOfChecked(items) === items.length) {
@@ -78,8 +76,13 @@ export default function EnhancedTransferList() {
         avatar={
           <Checkbox
             onClick={handleToggleAll(items)}
-            checked={numberOfChecked(items) === items.length && items.length !== 0}
-            indeterminate={numberOfChecked(items) !== items.length && numberOfChecked(items) !== 0}
+            checked={
+              numberOfChecked(items) === items.length && items.length !== 0
+            }
+            indeterminate={
+              numberOfChecked(items) !== items.length &&
+              numberOfChecked(items) !== 0
+            }
             disabled={items.length === 0}
             inputProps={{ 'aria-label': 'all items selected' }}
           />
@@ -98,13 +101,17 @@ export default function EnhancedTransferList() {
         sx={{
           width: 200,
           height: 220,
-          overflow: 'auto'
+          overflow: 'auto',
         }}
       >
         {items.map((value: number) => {
           const labelId = `transfer-list-all-item-${value}-label`;
           return (
-            <ListItemButton key={value} role="listitem" onClick={handleToggle(value)}>
+            <ListItemButton
+              key={value}
+              role="listitem"
+              onClick={handleToggle(value)}
+            >
               <ListItemIcon>
                 <Checkbox
                   checked={checked.indexOf(value) !== -1}
@@ -122,7 +129,12 @@ export default function EnhancedTransferList() {
   );
 
   return (
-    <Grid container justifyContent="center" alignItems="center" sx={{ width: 'auto', p: 3 }}>
+    <Grid
+      container
+      justifyContent="center"
+      alignItems="center"
+      sx={{ width: 'auto', p: 3 }}
+    >
       <Grid item>{customList('Choices', left)}</Grid>
       <Grid item>
         <Grid container direction="column" alignItems="center" sx={{ p: 3 }}>

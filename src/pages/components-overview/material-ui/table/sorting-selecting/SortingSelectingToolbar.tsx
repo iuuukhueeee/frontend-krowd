@@ -1,21 +1,27 @@
-import { Icon } from '@iconify/react';
 import trash2Fill from '@iconify/icons-eva/trash-2-fill';
 import roundFilterList from '@iconify/icons-ic/round-filter-list';
-import { useTheme, styled } from '@material-ui/core/styles';
-import { Toolbar, Tooltip, Typography, IconButton } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Icon } from '@iconify/react';
+import {
+  IconButton,
+  styled,
+  Toolbar,
+  Tooltip,
+  Typography,
+  useTheme,
+} from '@mui/material';
 
 const RootStyle = styled(Toolbar)(({ theme }) => ({
   height: 96,
   display: 'flex',
   justifyContent: 'space-between',
-  padding: theme.spacing(0, 1, 0, 3)
+  padding: theme.spacing(0, 1, 0, 3),
 }));
 
-// ----------------------------------------------------------------------
-
-export default function SortingSelectingToolbar({ numSelected }: { numSelected: number }) {
+export default function SortingSelectingToolbar({
+  numSelected,
+}: {
+  numSelected: number;
+}) {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
 
@@ -24,8 +30,8 @@ export default function SortingSelectingToolbar({ numSelected }: { numSelected: 
       sx={{
         ...(numSelected > 0 && {
           color: isLight ? 'primary.main' : 'text.primary',
-          bgcolor: isLight ? 'primary.lighter' : 'primary.dark'
-        })
+          bgcolor: isLight ? 'primary.lighter' : 'primary.dark',
+        }),
       }}
     >
       {numSelected > 0 ? (

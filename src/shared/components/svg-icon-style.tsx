@@ -1,7 +1,5 @@
 import { Box, BoxProps } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 interface SvgIconStyleProps extends BoxProps {
   src: string;
 }

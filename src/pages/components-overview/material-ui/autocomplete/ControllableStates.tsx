@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { TextField, Autocomplete, Typography } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Autocomplete, TextField, Typography } from '@mui/material';
 
 type ControllableStatesProps = {
   options: string[];
 };
 
-export default function ControllableStates({ options }: ControllableStatesProps) {
+export default function ControllableStates({
+  options,
+}: ControllableStatesProps) {
   const [value, setValue] = useState<string | null>(options[0]);
   const [inputValue, setInputValue] = useState('');
 

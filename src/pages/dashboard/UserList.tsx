@@ -1,44 +1,42 @@
-import { filter } from 'lodash';
-import { Icon } from '@iconify/react';
-import { sentenceCase } from 'change-case';
-import { useState, useEffect } from 'react';
-import plusFill from '@iconify/icons-eva/plus-fill';
+import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-// material
-import { useTheme } from '@material-ui/core/styles';
+import plusFill from '@iconify/icons-eva/plus-fill';
+import { Icon } from '@iconify/react';
 import {
-  Card,
-  Table,
-  Stack,
   Avatar,
   Button,
+  Card,
   Checkbox,
-  TableRow,
+  Container,
+  Stack,
+  Table,
   TableBody,
   TableCell,
-  Container,
-  Typography,
   TableContainer,
-  TablePagination
-} from '@material-ui/core';
-// redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getUserList, deleteUser } from '../../redux/slices/user';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
+  TablePagination,
+  TableRow,
+  Typography,
+} from '@mui/material';
+import { useTheme } from '@mui/material
+import { sentenceCase } from 'change-case';
+import { filter } from 'lodash';
+
 // @types
 import { UserManager } from '../../@types/user';
-// components
-import Page from '../../components/Page';
+import {
+  UserListHead,
+  UserListToolbar,
+  UserMoreMenu,
+} from '../../components/_dashboard/user/list';
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import Label from '../../components/Label';
+import Page from '../../components/Page';
 import Scrollbar from '../../components/Scrollbar';
 import SearchNotFound from '../../components/SearchNotFound';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../../components/_dashboard/user/list';
-
-// ----------------------------------------------------------------------
+import useSettings from '../../hooks/useSettings';
+import { deleteUser, getUserList } from '../../redux/slices/user';
+import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Name', alignRight: false },
@@ -46,10 +44,8 @@ const TABLE_HEAD = [
   { id: 'role', label: 'Role', alignRight: false },
   { id: 'isVerified', label: 'Verified', alignRight: false },
   { id: 'status', label: 'Status', alignRight: false },
-  { id: '' }
+  { id: '' },
 ];
-
-// ----------------------------------------------------------------------
 
 type Anonymous = Record<string | number, string>;
 
@@ -81,7 +77,10 @@ function applySortFilter(
     return a[1] - b[1];
   });
   if (query) {
-    return filter(array, (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1);
+    return filter(
+      array,
+      (_user) => _user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
   }
   return stabilizedThis.map((el) => el[0]);
 }
@@ -136,7 +135,9 @@ export default function UserList() {
     setSelected(newSelected);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -149,9 +150,14 @@ export default function UserList() {
     dispatch(deleteUser(userId));
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userList.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - userList.length) : 0;
 
-  const filteredUsers = applySortFilter(userList, getComparator(order, orderBy), filterName);
+  const filteredUsers = applySortFilter(
+    userList,
+    getComparator(order, orderBy),
+    filterName
+  );
 
   const isUserNotFound = filteredUsers.length === 0;
 
@@ -163,7 +169,7 @@ export default function UserList() {
           links={[
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             { name: 'User', href: PATH_DASHBOARD.user.root },
-            { name: 'List' }
+            { name: 'List' },
           ]}
           action={
             <Button
@@ -200,7 +206,15 @@ export default function UserList() {
                   {filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row) => {
-                      const { id, name, role, status, company, avatarUrl, isVerified } = row;
+                      const {
+                        id,
+                        name,
+                        role,
+                        status,
+                        company,
+                        avatarUrl,
+                        isVerified,
+                      } = row;
                       const isItemSelected = selected.indexOf(name) !== -1;
 
                       return (
@@ -213,10 +227,17 @@ export default function UserList() {
                           aria-checked={isItemSelected}
                         >
                           <TableCell padding="checkbox">
-                            <Checkbox checked={isItemSelected} onClick={() => handleClick(name)} />
+                            <Checkbox
+                              checked={isItemSelected}
+                              onClick={() => handleClick(name)}
+                            />
                           </TableCell>
                           <TableCell component="th" scope="row" padding="none">
-                            <Stack direction="row" alignItems="center" spacing={2}>
+                            <Stack
+                              direction="row"
+                              alignItems="center"
+                              spacing={2}
+                            >
                               <Avatar alt={name} src={avatarUrl} />
                               <Typography variant="subtitle2" noWrap>
                                 {name}
@@ -225,18 +246,29 @@ export default function UserList() {
                           </TableCell>
                           <TableCell align="left">{company}</TableCell>
                           <TableCell align="left">{role}</TableCell>
-                          <TableCell align="left">{isVerified ? 'Yes' : 'No'}</TableCell>
+                          <TableCell align="left">
+                            {isVerified ? 'Yes' : 'No'}
+                          </TableCell>
                           <TableCell align="left">
                             <Label
-                              variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
-                              color={(status === 'banned' && 'error') || 'success'}
+                              variant={
+                                theme.palette.mode === 'light'
+                                  ? 'ghost'
+                                  : 'filled'
+                              }
+                              color={
+                                (status === 'banned' && 'error') || 'success'
+                              }
                             >
                               {sentenceCase(status)}
                             </Label>
                           </TableCell>
 
                           <TableCell align="right">
-                            <UserMoreMenu onDelete={() => handleDeleteUser(id)} userName={name} />
+                            <UserMoreMenu
+                              onDelete={() => handleDeleteUser(id)}
+                              userName={name}
+                            />
                           </TableCell>
                         </TableRow>
                       );

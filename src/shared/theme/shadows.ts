@@ -17,7 +17,7 @@ interface CustomShadowOptions {
   error: string;
 }
 
-declare module '@mui/material' {
+declare module '@mui/material/styles' {
   interface Theme {
     customShadows: CustomShadowOptions;
   }

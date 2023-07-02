@@ -1,30 +1,28 @@
 import { useState } from 'react';
-// material
-import CheckIcon from '@material-ui/icons/Check';
-import ViewListIcon from '@material-ui/icons/ViewList';
-import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
-import FormatBoldIcon from '@material-ui/icons/FormatBold';
-import ViewModuleIcon from '@material-ui/icons/ViewModule';
-import FormatItalicIcon from '@material-ui/icons/FormatItalic';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import FormatColorFillIcon from '@material-ui/icons/FormatColorFill';
-import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
-import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
+import CheckIcon from '@material-ui/icons/Check';
 import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
-import { Grid, ToggleButton, ToggleButtonGroup } from '@material-ui/core';
 import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
+import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
+import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
+import FormatBoldIcon from '@material-ui/icons/FormatBold';
+import FormatColorFillIcon from '@material-ui/icons/FormatColorFill';
+import FormatItalicIcon from '@material-ui/icons/FormatItalic';
+import FormatUnderlinedIcon from '@material-ui/icons/FormatUnderlined';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
+import { Grid, ToggleButton, ToggleButtonGroup } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { m: '8px !important' }
+  '& > *': { m: '8px !important' },
 } as const;
 
 export default function ToggleButtons() {
@@ -33,15 +31,24 @@ export default function ToggleButtons() {
   const [view, setView] = useState('list');
   const [selected, setSelected] = useState(false);
 
-  const handleAlignment = (event: React.MouseEvent<HTMLElement>, newAlignment: string | null) => {
+  const handleAlignment = (
+    event: React.MouseEvent<HTMLElement>,
+    newAlignment: string | null
+  ) => {
     setAlignment(newAlignment);
   };
 
-  const handleFormat = (event: React.MouseEvent<HTMLElement>, newFormats: string[]) => {
+  const handleFormat = (
+    event: React.MouseEvent<HTMLElement>,
+    newFormats: string[]
+  ) => {
     setFormats(newFormats);
   };
 
-  const handleChange = (event: React.MouseEvent<HTMLElement>, nextView: string) => {
+  const handleChange = (
+    event: React.MouseEvent<HTMLElement>,
+    nextView: string
+  ) => {
     setView(nextView);
   };
 
@@ -49,7 +56,11 @@ export default function ToggleButtons() {
     <Grid container spacing={3}>
       <Grid item xs={12} md={6}>
         <Block title="Exclusive selection" sx={style}>
-          <ToggleButtonGroup value={alignment} exclusive onChange={handleAlignment}>
+          <ToggleButtonGroup
+            value={alignment}
+            exclusive
+            onChange={handleAlignment}
+          >
             <ToggleButton value="left">
               <FormatAlignLeftIcon />
             </ToggleButton>
@@ -160,7 +171,12 @@ export default function ToggleButtons() {
 
       <Grid item xs={12} md={6}>
         <Block title="Vertical & Standalone buttons" sx={style}>
-          <ToggleButtonGroup orientation="vertical" value={view} exclusive onChange={handleChange}>
+          <ToggleButtonGroup
+            orientation="vertical"
+            value={view}
+            exclusive
+            onChange={handleChange}
+          >
             <ToggleButton value="list">
               <ViewListIcon />
             </ToggleButton>

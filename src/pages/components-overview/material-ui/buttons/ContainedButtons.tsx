@@ -1,18 +1,16 @@
-// material
 import AlarmIcon from '@material-ui/icons/Alarm';
-import { Grid, Button } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import { Button, Grid } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { mx: '8px !important' }
+  '& > *': { mx: '8px !important' },
 } as const;
 
 export default function ContainedButtons() {
@@ -69,7 +67,11 @@ export default function ContainedButtons() {
           <LoadingButton loading variant="contained">
             Submit
           </LoadingButton>
-          <LoadingButton loading loadingIndicator="Loading..." variant="contained">
+          <LoadingButton
+            loading
+            loadingIndicator="Loading..."
+            variant="contained"
+          >
             Fetch data
           </LoadingButton>
           <LoadingButton

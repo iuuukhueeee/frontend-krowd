@@ -1,55 +1,48 @@
-import { filter } from 'lodash';
-import { Icon } from '@iconify/react';
-import { sentenceCase } from 'change-case';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import moreVerticalFill from '@iconify/icons-eva/more-vertical-fill';
-// material
-import { useTheme, styled } from '@material-ui/core/styles';
+import { Icon } from '@iconify/react';
 import {
   Box,
   Card,
-  Table,
-  TableRow,
   Checkbox,
-  TableBody,
-  TableCell,
   Container,
   IconButton,
-  Typography,
+  Table,
+  TableBody,
+  TableCell,
   TableContainer,
-  TablePagination
-} from '@material-ui/core';
-// redux
-import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts } from '../../redux/slices/product';
-// utils
-import { fDate } from '../../utils/formatTime';
-import { fCurrency } from '../../utils/formatNumber';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
+  TablePagination,
+  TableRow,
+  Typography,
+} from '@mui/material';
+import { styled, useTheme } from '@mui/material
+import { sentenceCase } from 'change-case';
+import { filter } from 'lodash';
+
 // @types
 import { Product, ProductState } from '../../@types/products';
-// components
-import Page from '../../components/Page';
-import Label from '../../components/Label';
-import Scrollbar from '../../components/Scrollbar';
-import SearchNotFound from '../../components/SearchNotFound';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import {
   ProductListHead,
-  ProductListToolbar
+  ProductListToolbar,
 } from '../../components/_dashboard/e-commerce/product-list';
-
-// ----------------------------------------------------------------------
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Label from '../../components/Label';
+import Page from '../../components/Page';
+import Scrollbar from '../../components/Scrollbar';
+import SearchNotFound from '../../components/SearchNotFound';
+import useSettings from '../../hooks/useSettings';
+import { getProducts } from '../../redux/slices/product';
+import { useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
+import { fCurrency } from '../../utils/formatNumber';
+import { fDate } from '../../utils/formatTime';
 
 const TABLE_HEAD = [
   { id: 'name', label: 'Product', alignRight: false },
   { id: 'createdAt', label: 'Create at', alignRight: false },
   { id: 'inventoryType', label: 'Status', alignRight: false },
   { id: 'price', label: 'Price', alignRight: true },
-  { id: '' }
+  { id: '' },
 ];
 
 const ThumbImgStyle = styled('img')(({ theme }) => ({
@@ -57,10 +50,8 @@ const ThumbImgStyle = styled('img')(({ theme }) => ({
   height: 64,
   objectFit: 'cover',
   margin: theme.spacing(0, 2),
-  borderRadius: theme.shape.borderRadiusSm
+  borderRadius: theme.shape.borderRadiusSm,
 }));
-
-// ----------------------------------------------------------------------
 
 function descendingComparator(a: Anonymous, b: Anonymous, orderBy: string) {
   if (b[orderBy] < a[orderBy]) {
@@ -80,7 +71,11 @@ function getComparator(order: string, orderBy: string) {
     : (a: Anonymous, b: Anonymous) => -descendingComparator(a, b, orderBy);
 }
 
-function applySortFilter(array: Product[], comparator: (a: any, b: any) => number, query: string) {
+function applySortFilter(
+  array: Product[],
+  comparator: (a: any, b: any) => number,
+  query: string
+) {
   const stabilizedThis = array.map((el, index) => [el, index] as const);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -91,21 +86,22 @@ function applySortFilter(array: Product[], comparator: (a: any, b: any) => numbe
   if (query) {
     return filter(
       array,
-      (_product) => _product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      (_product) =>
+        _product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
   }
 
   return stabilizedThis.map((el) => el[0]);
 }
 
-// ----------------------------------------------------------------------
-
 export default function EcommerceProductList() {
   const { themeStretch } = useSettings();
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  const { products } = useSelector((state: { product: ProductState }) => state.product);
+  const { products } = useSelector(
+    (state: { product: ProductState }) => state.product
+  );
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState<'asc' | 'desc'>('asc');
   const [selected, setSelected] = useState<string[]>([]);
@@ -150,7 +146,9 @@ export default function EcommerceProductList() {
     setSelected(newSelected);
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
@@ -159,9 +157,14 @@ export default function EcommerceProductList() {
     setFilterName(filterName);
   };
 
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
 
-  const filteredProducts = applySortFilter(products, getComparator(order, orderBy), filterName);
+  const filteredProducts = applySortFilter(
+    products,
+    getComparator(order, orderBy),
+    filterName
+  );
 
   const isProductNotFound = filteredProducts.length === 0;
 
@@ -174,9 +177,9 @@ export default function EcommerceProductList() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root
+              href: PATH_DASHBOARD.eCommerce.root,
             },
-            { name: 'Product List' }
+            { name: 'Product List' },
           ]}
         />
 
@@ -203,7 +206,14 @@ export default function EcommerceProductList() {
                   {filteredProducts
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                     .map((row, index) => {
-                      const { id, name, cover, price, createdAt, inventoryType } = row;
+                      const {
+                        id,
+                        name,
+                        cover,
+                        price,
+                        createdAt,
+                        inventoryType,
+                      } = row;
 
                       const isItemSelected = selected.indexOf(name) !== -1;
 
@@ -225,7 +235,7 @@ export default function EcommerceProductList() {
                               sx={{
                                 py: 2,
                                 display: 'flex',
-                                alignItems: 'center'
+                                alignItems: 'center',
                               }}
                             >
                               <ThumbImgStyle alt={name} src={cover} />
@@ -234,10 +244,16 @@ export default function EcommerceProductList() {
                               </Typography>
                             </Box>
                           </TableCell>
-                          <TableCell style={{ minWidth: 160 }}>{fDate(createdAt)}</TableCell>
+                          <TableCell style={{ minWidth: 160 }}>
+                            {fDate(createdAt)}
+                          </TableCell>
                           <TableCell style={{ minWidth: 160 }}>
                             <Label
-                              variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+                              variant={
+                                theme.palette.mode === 'light'
+                                  ? 'ghost'
+                                  : 'filled'
+                              }
                               color={
                                 (inventoryType === 'out_of_stock' && 'error') ||
                                 (inventoryType === 'low_stock' && 'warning') ||
@@ -247,10 +263,16 @@ export default function EcommerceProductList() {
                               {inventoryType ? sentenceCase(inventoryType) : ''}
                             </Label>
                           </TableCell>
-                          <TableCell align="right">{fCurrency(price)}</TableCell>
+                          <TableCell align="right">
+                            {fCurrency(price)}
+                          </TableCell>
                           <TableCell align="right">
                             <IconButton>
-                              <Icon icon={moreVerticalFill} width={20} height={20} />
+                              <Icon
+                                icon={moreVerticalFill}
+                                width={20}
+                                height={20}
+                              />
                             </IconButton>
                           </TableCell>
                         </TableRow>

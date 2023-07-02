@@ -1,25 +1,21 @@
-// material
-import { Grid, Container, Typography } from '@material-ui/core';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
+import { Container, Grid, Typography } from '@mui/material';
+
 import {
-  AnalyticsTasks,
-  AnalyticsNewUsers,
   AnalyticsBugReports,
+  AnalyticsConversionRates,
+  AnalyticsCurrentSubject,
+  AnalyticsCurrentVisits,
   AnalyticsItemOrders,
   AnalyticsNewsUpdate,
-  AnalyticsWeeklySales,
+  AnalyticsNewUsers,
   AnalyticsOrderTimeline,
-  AnalyticsCurrentVisits,
-  AnalyticsWebsiteVisits,
+  AnalyticsTasks,
   AnalyticsTrafficBySite,
-  AnalyticsCurrentSubject,
-  AnalyticsConversionRates
+  AnalyticsWebsiteVisits,
+  AnalyticsWeeklySales,
 } from '../../components/_dashboard/general-analytics';
-
-// ----------------------------------------------------------------------
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
 
 export default function GeneralAnalytics() {
   const { themeStretch } = useSettings();

@@ -1,8 +1,5 @@
-// material
 import { useTheme } from '@mui/material';
 import { Box, BoxProps } from '@mui/system';
-
-// ----------------------------------------------------------------------
 
 export default function Logo({ sx }: BoxProps) {
   const theme = useTheme();

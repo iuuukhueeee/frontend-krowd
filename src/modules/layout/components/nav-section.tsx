@@ -29,7 +29,8 @@ const ListSubheaderStyle = styled((props) => (
   marginBottom: theme.spacing(2),
   paddingLeft: theme.spacing(5),
   color: theme.palette.text.primary,
-}));
+  fontWeight: theme.typography.fontWeightBold,
+})) as typeof ListSubheader;
 
 const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
   ...typography.body2,
@@ -51,17 +52,17 @@ const ListItemStyle = styled(ListItemButton)(({ theme }) => ({
     borderBottomLeftRadius: 4,
     backgroundColor: theme.palette.primary.main,
   },
-}));
+})) as typeof ListItemButton;
 
-const ListItemIconStyle = styled(ListItemIcon)({
+const ListItemIconStyle = styled(ListItemIcon)(({ theme }) => ({
   width: 22,
   height: 22,
   display: 'flex',
+  minWidth: 'auto',
+  marginRight: theme.spacing(2),
   alignItems: 'center',
   justifyContent: 'center',
-});
-
-// ----------------------------------------------------------------------
+}));
 
 type NavItemProps = {
   title: string;
@@ -127,13 +128,7 @@ function NavItem({
               {info && info}
               <Box
                 component={Icon}
-                icon={
-                  open ? (
-                    <Icon icon="eva:chevron-down-fill" />
-                  ) : (
-                    <Icon icon="eva:chevron-up-fill" />
-                  )
-                }
+                icon={open ? 'eva:chevron-down-fill' : 'eva:chevron-up-fill'}
                 sx={{ width: 16, height: 16, ml: 1 }}
               />
             </>

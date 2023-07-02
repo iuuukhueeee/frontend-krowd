@@ -1,24 +1,30 @@
 import { useEffect } from 'react';
-// material
-import { Container, Stack, Skeleton, Grid } from '@material-ui/core';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
-// redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
-import { getBoard, persistColumn, persistCard } from '../../redux/slices/kanban';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { KanbanColumn, KanbanColumnAdd } from '../../components/_dashboard/kanban';
+import { Container, Grid, Skeleton, Stack } from '@mui/material';
 
-// ----------------------------------------------------------------------
+import {
+  KanbanColumn,
+  KanbanColumnAdd,
+} from '../../components/_dashboard/kanban';
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page';
+import {
+  getBoard,
+  persistCard,
+  persistColumn,
+} from '../../redux/slices/kanban';
+import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 const SkeletonLoad = (
   <>
     {[...Array(3)].map((_, index) => (
       <Grid item xs={12} md={3} key={index}>
-        <Skeleton variant="rectangular" width="100%" sx={{ paddingTop: '115%', borderRadius: 2 }} />
+        <Skeleton
+          variant="rectangular"
+          width="100%"
+          sx={{ paddingTop: '115%', borderRadius: 2 }}
+        />
       </Grid>
     ))}
   </>
@@ -33,12 +39,14 @@ export default function Kanban() {
   }, [dispatch]);
 
   const onDragEnd = (result: DropResult) => {
-    // Reorder card
     const { destination, source, draggableId, type } = result;
 
     if (!destination) return;
 
-    if (destination.droppableId === source.droppableId && destination.index === source.index)
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    )
       return;
 
     if (type === 'column') {
@@ -60,13 +68,13 @@ export default function Kanban() {
 
       const updatedColumn = {
         ...start,
-        cardIds: updatedCardIds
+        cardIds: updatedCardIds,
       };
 
       dispatch(
         persistCard({
           ...board.columns,
-          [updatedColumn.id]: updatedColumn
+          [updatedColumn.id]: updatedColumn,
         })
       );
       return;
@@ -76,21 +84,21 @@ export default function Kanban() {
     startCardIds.splice(source.index, 1);
     const updatedStart = {
       ...start,
-      cardIds: startCardIds
+      cardIds: startCardIds,
     };
 
     const finishCardIds = [...finish.cardIds];
     finishCardIds.splice(destination.index, 0, draggableId);
     const updatedFinish = {
       ...finish,
-      cardIds: finishCardIds
+      cardIds: finishCardIds,
     };
 
     dispatch(
       persistCard({
         ...board.columns,
         [updatedStart.id]: updatedStart,
-        [updatedFinish.id]: updatedFinish
+        [updatedFinish.id]: updatedFinish,
       })
     );
   };
@@ -103,13 +111,17 @@ export default function Kanban() {
           links={[
             {
               name: 'Dashboard',
-              href: PATH_DASHBOARD.root
+              href: PATH_DASHBOARD.root,
             },
-            { name: 'Kanban' }
+            { name: 'Kanban' },
           ]}
         />
         <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="all-columns" direction="horizontal" type="column">
+          <Droppable
+            droppableId="all-columns"
+            direction="horizontal"
+            type="column"
+          >
             {(provided) => (
               <Stack
                 {...provided.droppableProps}
@@ -121,7 +133,13 @@ export default function Kanban() {
               >
                 {board?.columnOrder?.map((columnId, index) => {
                   const column = board.columns[columnId];
-                  return <KanbanColumn index={index} key={columnId} column={column} />;
+                  return (
+                    <KanbanColumn
+                      index={index}
+                      key={columnId}
+                      column={column}
+                    />
+                  );
                 })}
 
                 {!board?.columnOrder.length && SkeletonLoad}

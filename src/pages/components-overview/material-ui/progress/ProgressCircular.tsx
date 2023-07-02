@@ -1,9 +1,7 @@
-// material
-import { Grid, Paper, CircularProgress } from '@material-ui/core';
+import { CircularProgress, Grid, Paper } from '@mui/material';
+
 //
 import { Label } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   minHeight: 160,
@@ -11,10 +9,8 @@ const style = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-  '& > *': { m: 1 }
+  '& > *': { m: 1 },
 } as const;
-
-// ----------------------------------------------------------------------
 
 type CircularProps = {
   progress: number;
@@ -44,7 +40,11 @@ export default function ProgressCircular({ progress }: CircularProps) {
           <CircularProgress color="info" variant="determinate" value={50} />
           <CircularProgress color="info" variant="determinate" value={75} />
           <CircularProgress color="info" variant="determinate" value={100} />
-          <CircularProgress color="info" variant="determinate" value={progress} />
+          <CircularProgress
+            color="info"
+            variant="determinate"
+            value={progress}
+          />
         </Paper>
       </Grid>
 

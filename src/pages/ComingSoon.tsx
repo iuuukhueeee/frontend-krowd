@@ -1,45 +1,43 @@
-import { Icon } from '@iconify/react';
-import twitterFill from '@iconify/icons-eva/twitter-fill';
+import instagramFilled from '@iconify/icons-ant-design/instagram-filled';
 import facebookFill from '@iconify/icons-eva/facebook-fill';
 import linkedinFill from '@iconify/icons-eva/linkedin-fill';
-import instagramFilled from '@iconify/icons-ant-design/instagram-filled';
-// material
-import { styled } from '@material-ui/core/styles';
+import twitterFill from '@iconify/icons-eva/twitter-fill';
+import { Icon } from '@iconify/react';
 import {
   Box,
   Button,
-  Tooltip,
   Container,
-  Typography,
   InputAdornment,
-  OutlinedInput
-} from '@material-ui/core';
-// hooks
-import useCountdown from '../hooks/useCountdown';
-// components
+  OutlinedInput,
+  Tooltip,
+  Typography,
+} from '@mui/material';
+import { styled } from '@mui/material
+
+import { ComingSoonIllustration } from '../assets';
 import { MIconButton } from '../components/@material-extend';
 import Page from '../components/Page';
-import { ComingSoonIllustration } from '../assets';
-
-// ----------------------------------------------------------------------
+import useCountdown from '../hooks/useCountdown';
 
 const SOCIALS = [
   {
     name: 'Facebook',
-    icon: <Icon icon={facebookFill} width={24} height={24} color="#1877F2" />
+    icon: <Icon icon={facebookFill} width={24} height={24} color="#1877F2" />,
   },
   {
     name: 'Instagram',
-    icon: <Icon icon={instagramFilled} width={24} height={24} color="#D7336D" />
+    icon: (
+      <Icon icon={instagramFilled} width={24} height={24} color="#D7336D" />
+    ),
   },
   {
     name: 'Linkedin',
-    icon: <Icon icon={linkedinFill} width={24} height={24} color="#006097" />
+    icon: <Icon icon={linkedinFill} width={24} height={24} color="#006097" />,
   },
   {
     name: 'Twitter',
-    icon: <Icon icon={twitterFill} width={24} height={24} color="#1C9CEA" />
-  }
+    icon: <Icon icon={twitterFill} width={24} height={24} color="#1C9CEA" />,
+  },
 ];
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -47,22 +45,20 @@ const RootStyle = styled(Page)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   paddingTop: theme.spacing(15),
-  paddingBottom: theme.spacing(10)
+  paddingBottom: theme.spacing(10),
 }));
 
 const CountdownStyle = styled('div')({
   display: 'flex',
-  justifyContent: 'center'
+  justifyContent: 'center',
 });
 
 const SeparatorStyle = styled(Typography)(({ theme }) => ({
   margin: theme.spacing(0, 1),
   [theme.breakpoints.up('sm')]: {
-    margin: theme.spacing(0, 2.5)
-  }
+    margin: theme.spacing(0, 2.5),
+  },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function ComingSoon() {
   const countdown = useCountdown(new Date('07/07/2022 21:30'));
@@ -124,15 +120,16 @@ export default function ComingSoon() {
               transition: (theme) =>
                 theme.transitions.create('box-shadow', {
                   easing: theme.transitions.easing.easeInOut,
-                  duration: theme.transitions.duration.shorter
+                  duration: theme.transitions.duration.shorter,
                 }),
               '&.Mui-focused': {
-                boxShadow: (theme) => theme.customShadows.z8
+                boxShadow: (theme) => theme.customShadows.z8,
               },
               '& fieldset': {
                 borderWidth: `1px !important`,
-                borderColor: (theme) => `${theme.palette.grey[500_32]} !important`
-              }
+                borderColor: (theme) =>
+                  `${theme.palette.grey[500_32]} !important`,
+              },
             }}
           />
 

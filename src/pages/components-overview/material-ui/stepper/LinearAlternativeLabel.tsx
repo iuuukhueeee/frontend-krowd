@@ -1,10 +1,19 @@
 import { useState } from 'react';
-// material
-import { Box, Step, Paper, Button, Stepper, StepLabel, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Paper,
+  Step,
+  StepLabel,
+  Stepper,
+  Typography,
+} from '@mui/material';
 
-// ----------------------------------------------------------------------
-
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+const steps = [
+  'Select campaign settings',
+  'Create an ad group',
+  'Create an ad',
+];
 
 export default function LinearAlternativeLabel() {
   const [activeStep, setActiveStep] = useState(0);
@@ -70,7 +79,9 @@ export default function LinearAlternativeLabel() {
       {activeStep === steps.length ? (
         <>
           <Paper sx={{ p: 3, my: 3, minHeight: 120, bgcolor: 'grey.50012' }}>
-            <Typography sx={{ my: 1 }}>All steps completed - you&apos;re finished</Typography>
+            <Typography sx={{ my: 1 }}>
+              All steps completed - you&apos;re finished
+            </Typography>
           </Paper>
 
           <Box sx={{ display: 'flex' }}>
@@ -84,7 +95,12 @@ export default function LinearAlternativeLabel() {
             <Typography sx={{ my: 1 }}> Step {activeStep + 1}</Typography>
           </Paper>
           <Box sx={{ display: 'flex' }}>
-            <Button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }}>
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
               Back
             </Button>
             <Box sx={{ flexGrow: 1 }} />

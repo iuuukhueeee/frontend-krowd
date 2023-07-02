@@ -1,19 +1,13 @@
 import { useEffect } from 'react';
-// material
-import { Card, Container } from '@material-ui/core';
-// redux
-import { useDispatch } from '../../redux/store';
-import { getConversations, getContacts } from '../../redux/slices/chat';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { ChatSidebar, ChatWindow } from '../../components/_dashboard/chat';
+import { Card, Container } from '@mui/material';
 
-// ----------------------------------------------------------------------
+import { ChatSidebar, ChatWindow } from '../../components/_dashboard/chat';
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
+import { getContacts, getConversations } from '../../redux/slices/chat';
+import { useDispatch } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 export default function Chat() {
   const { themeStretch } = useSettings();
@@ -29,7 +23,10 @@ export default function Chat() {
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <HeaderBreadcrumbs
           heading="Chat"
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Chat' }]}
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Chat' },
+          ]}
         />
         <Card sx={{ height: '72vh', display: 'flex' }}>
           <ChatSidebar />

@@ -1,36 +1,33 @@
 import { useState } from 'react';
-// material
-import Visibility from '@material-ui/icons/Visibility';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import {
-  Stack,
-  Input,
-  MenuItem,
-  TextField,
-  IconButton,
-  InputLabel,
   FormControl,
+  FormHelperText,
+  IconButton,
+  Input,
   InputAdornment,
-  FormHelperText
-} from '@material-ui/core';
+  InputLabel,
+  MenuItem,
+  Stack,
+  TextField,
+} from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const CURRENCIES = [
   { value: 'USD', label: '$' },
   { value: 'EUR', label: '€' },
   { value: 'BTC', label: '฿' },
-  { value: 'JPY', label: '¥' }
+  { value: 'JPY', label: '¥' },
 ];
 
 const style = {
-  '& > *': { my: '8px !important' }
+  '& > *': { my: '8px !important' },
 };
 
-// ----------------------------------------------------------------------
 interface State {
   amount: string;
   password: string;
@@ -46,22 +43,25 @@ export default function Standard() {
     password: '',
     weight: '',
     weightRange: '',
-    showPassword: false
+    showPassword: false,
   });
 
   const handleChangeCurrency = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
 
-  const handleChange = (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const handleChange =
+    (prop: keyof State) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setValues({ ...values, [prop]: event.target.value });
+    };
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
   };
   return (
@@ -69,8 +69,18 @@ export default function Standard() {
       <Stack spacing={3} sx={{ width: 1 }}>
         <Block title="General" sx={style}>
           <TextField variant="standard" fullWidth label="Inactive" />
-          <TextField fullWidth label="Activated" variant="standard" defaultValue="Hello Minimal" />
-          <TextField fullWidth type="password" label="Password" variant="standard" />
+          <TextField
+            fullWidth
+            label="Activated"
+            variant="standard"
+            defaultValue="Hello Minimal"
+          />
+          <TextField
+            fullWidth
+            type="password"
+            label="Password"
+            variant="standard"
+          />
 
           <TextField
             disabled
@@ -91,7 +101,7 @@ export default function Standard() {
                 <InputAdornment position="start">
                   <AccountCircle />
                 </InputAdornment>
-              )
+              ),
             }}
           />
           <TextField
@@ -105,7 +115,7 @@ export default function Standard() {
                 <InputAdornment position="start">
                   <AccountCircle />
                 </InputAdornment>
-              )
+              ),
             }}
           />
           <TextField
@@ -113,7 +123,9 @@ export default function Standard() {
             variant="standard"
             label="With normal TextField"
             InputProps={{
-              startAdornment: <InputAdornment position="start">Kg</InputAdornment>
+              startAdornment: (
+                <InputAdornment position="start">Kg</InputAdornment>
+              ),
             }}
           />
           <FormControl fullWidth>
@@ -122,10 +134,14 @@ export default function Standard() {
               onChange={handleChange('weight')}
               endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
             />
-            <FormHelperText id="standard-weight-helper-text">Weight</FormHelperText>
+            <FormHelperText id="standard-weight-helper-text">
+              Weight
+            </FormHelperText>
           </FormControl>
           <FormControl fullWidth>
-            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+            <InputLabel htmlFor="standard-adornment-password">
+              Password
+            </InputLabel>
             <Input
               type={values.showPassword ? 'text' : 'password'}
               value={values.password}
@@ -186,12 +202,28 @@ export default function Standard() {
             defaultValue={0}
             InputLabelProps={{ shrink: true }}
           />
-          <TextField fullWidth variant="standard" label="Search" type="search" />
+          <TextField
+            fullWidth
+            variant="standard"
+            label="Search"
+            type="search"
+          />
         </Block>
 
         <Block title="Size" sx={style}>
-          <TextField fullWidth variant="standard" label="Size" size="small" defaultValue="Small" />
-          <TextField fullWidth variant="standard" label="Size" defaultValue="Normal" />
+          <TextField
+            fullWidth
+            variant="standard"
+            label="Size"
+            size="small"
+            defaultValue="Small"
+          />
+          <TextField
+            fullWidth
+            variant="standard"
+            label="Size"
+            defaultValue="Normal"
+          />
         </Block>
 
         <Block title="Select" sx={style}>

@@ -1,7 +1,4 @@
-import { Theme } from '@material-ui/core/styles';
-import { SxProps } from '@material-ui/system';
-
-// ----------------------------------------------------------------------
+import { SxProps, Theme } from '@mui/material';
 
 type Products = {
   name: string;

@@ -1,41 +1,35 @@
 import { useState } from 'react';
-// material
-import { styled } from '@material-ui/core/styles';
 import {
+  Autocomplete,
   Box,
-  Grid,
   Checkbox,
   Container,
+  Grid,
   TextField,
   Typography,
-  Autocomplete
-} from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+} from '@mui/material';
+import { styled } from '@mui/material
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 function countryToFlag(isoCode: string) {
   return typeof String.fromCodePoint !== 'undefined'
     ? isoCode
         .toUpperCase()
-        .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+        .replace(/./g, (char) =>
+          String.fromCodePoint(char.charCodeAt(0) + 127397)
+        )
     : isoCode;
 }
-
-// ----------------------------------------------------------------------
 
 export default function AutocompleteComponent() {
   const [value, setValue] = useState<string | null>(options[0]);
@@ -48,13 +42,17 @@ export default function AutocompleteComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Autocomplete"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Autocomplete' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Autocomplete' },
+            ]}
             moreLink="https://next.material-ui.com/components/autocomplete"
           />
         </Container>
@@ -68,7 +66,9 @@ export default function AutocompleteComponent() {
                 fullWidth
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                renderInput={(params) => <TextField {...params} label="Combo box" margin="none" />}
+                renderInput={(params) => (
+                  <TextField {...params} label="Combo box" margin="none" />
+                )}
               />
             </Block>
           </Grid>
@@ -80,8 +80,8 @@ export default function AutocompleteComponent() {
                   width: '100%',
                   '& .MuiAutocomplete-option': {
                     typography: 'body2',
-                    '& > span': { mr: 1, fontSize: 20 }
-                  }
+                    '& > span': { mr: 1, fontSize: 20 },
+                  },
                 }}
               >
                 <Autocomplete
@@ -102,7 +102,7 @@ export default function AutocompleteComponent() {
                       label="Choose a country"
                       inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password'
+                        autoComplete: 'new-password',
                       }}
                     />
                   )}
@@ -112,7 +112,10 @@ export default function AutocompleteComponent() {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Block title=" Controllable states" sx={{ flexDirection: 'column' }}>
+            <Block
+              title=" Controllable states"
+              sx={{ flexDirection: 'column' }}
+            >
               <>
                 <Autocomplete
                   fullWidth
@@ -125,7 +128,9 @@ export default function AutocompleteComponent() {
                   onInputChange={(event, newInputValue) => {
                     setInputValue(newInputValue);
                   }}
-                  renderInput={(params) => <TextField {...params} label="Controllable" />}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Controllable" />
+                  )}
                 />
                 <Typography variant="body2" sx={{ mt: 2 }}>{`value: ${
                   value !== null ? `'${value}'` : 'null'
@@ -141,7 +146,9 @@ export default function AutocompleteComponent() {
                 fullWidth
                 freeSolo
                 options={top100Films.map((option) => option.title)}
-                renderInput={(params) => <TextField {...params} label="freeSolo" />}
+                renderInput={(params) => (
+                  <TextField {...params} label="freeSolo" />
+                )}
                 sx={{ mb: 2 }}
               />
               <Autocomplete
@@ -170,7 +177,11 @@ export default function AutocompleteComponent() {
                 defaultValue={[top100Films[13]]}
                 filterSelectedOptions
                 renderInput={(params) => (
-                  <TextField {...params} label="filterSelectedOptions" placeholder="Favorites" />
+                  <TextField
+                    {...params}
+                    label="filterSelectedOptions"
+                    placeholder="Favorites"
+                  />
                 )}
               />
             </Block>
@@ -191,7 +202,11 @@ export default function AutocompleteComponent() {
                   </li>
                 )}
                 renderInput={(params) => (
-                  <TextField {...params} label="Checkboxes" placeholder="Favorites" />
+                  <TextField
+                    {...params}
+                    label="Checkboxes"
+                    placeholder="Favorites"
+                  />
                 )}
               />
             </Block>
@@ -206,7 +221,11 @@ export default function AutocompleteComponent() {
                   getOptionLabel={(option) => option.title}
                   defaultValue={top100Films[13]}
                   renderInput={(params) => (
-                    <TextField {...params} label="Size Medium" placeholder="Favorites" />
+                    <TextField
+                      {...params}
+                      label="Size Medium"
+                      placeholder="Favorites"
+                    />
                   )}
                 />
                 <br />
@@ -218,7 +237,11 @@ export default function AutocompleteComponent() {
                   getOptionLabel={(option) => option.title}
                   defaultValue={[top100Films[13]]}
                   renderInput={(params) => (
-                    <TextField {...params} label="Size small" placeholder="Favorites" />
+                    <TextField
+                      {...params}
+                      label="Size small"
+                      placeholder="Favorites"
+                    />
                   )}
                 />
               </>
@@ -286,8 +309,9 @@ const top100Films = [
   { title: 'Alien', year: 1979 },
   { title: 'Sunset Boulevard', year: 1950 },
   {
-    title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
-    year: 1964
+    title:
+      'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+    year: 1964,
   },
   { title: 'The Great Dictator', year: 1940 },
   { title: 'Cinema Paradiso', year: 1988 },
@@ -335,7 +359,7 @@ const top100Films = [
   { title: 'Inglourious Basterds', year: 2009 },
   { title: 'Snatch', year: 2000 },
   { title: '3 Idiots', year: 2009 },
-  { title: 'Monty Python and the Holy Grail', year: 1975 }
+  { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
 const countries = [
@@ -430,7 +454,7 @@ const countries = [
   {
     code: 'GS',
     label: 'South Georgia and the South Sandwich Islands',
-    phone: '500'
+    phone: '500',
   },
   { code: 'GT', label: 'Guatemala', phone: '502' },
   { code: 'GU', label: 'Guam', phone: '1-671' },
@@ -488,7 +512,7 @@ const countries = [
   {
     code: 'MK',
     label: 'Macedonia, the Former Yugoslav Republic of',
-    phone: '389'
+    phone: '389',
   },
   { code: 'ML', label: 'Mali', phone: '223' },
   { code: 'MM', label: 'Myanmar', phone: '95' },
@@ -594,5 +618,5 @@ const countries = [
   { code: 'YT', label: 'Mayotte', phone: '262' },
   { code: 'ZA', label: 'South Africa', phone: '27' },
   { code: 'ZM', label: 'Zambia', phone: '260' },
-  { code: 'ZW', label: 'Zimbabwe', phone: '263' }
+  { code: 'ZW', label: 'Zimbabwe', phone: '263' },
 ];

@@ -1,36 +1,31 @@
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Grid, Container } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../../routes/paths';
-// components
-import Page from '../../../../components/Page';
+import { Box, Container, Grid } from '@mui/material';
+import { styled } from '@mui/material
+
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
-//
-import FormDialogs from './FormDialogs';
-import AlertDialog from './AlertDialog';
-import ScrollDialog from './ScrollDialog';
-import SimpleDialogs from './SimpleDialogs';
-import MaxWidthDialog from './MaxWidthDialog';
-import FullScreenDialogs from './FullScreenDialogs';
-import TransitionsDialogs from './TransitionsDialogs';
+import Page from '../../../../components/Page';
+import { PATH_PAGE } from '../../../../routes/paths';
 //
 import { Block } from '../../Block';
 
-// ----------------------------------------------------------------------
+import AlertDialog from './AlertDialog';
+//
+import FormDialogs from './FormDialogs';
+import FullScreenDialogs from './FullScreenDialogs';
+import MaxWidthDialog from './MaxWidthDialog';
+import ScrollDialog from './ScrollDialog';
+import SimpleDialogs from './SimpleDialogs';
+import TransitionsDialogs from './TransitionsDialogs';
 
 const style = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function DialogComponent() {
   return (
@@ -40,13 +35,17 @@ export default function DialogComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Dialog"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Dialog' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Dialog' },
+            ]}
             moreLink="https://next.material-ui.com/components/dialogs"
           />
         </Container>

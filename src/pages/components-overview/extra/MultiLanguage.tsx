@@ -1,31 +1,26 @@
 import { useState } from 'react';
-// material
-import { styled } from '@material-ui/core/styles';
 import {
   Box,
   Card,
-  Stack,
-  Radio,
-  Container,
   CardHeader,
-  Typography,
+  Container,
+  FormControlLabel,
+  Radio,
   RadioGroup,
+  Stack,
   TablePagination,
-  FormControlLabel
-} from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// hooks
-import useLocales from '../../../hooks/useLocales';
-// components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+  Typography,
+} from '@mui/material';
+import { styled } from '@mui/material
 
-// ----------------------------------------------------------------------
+import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import useLocales from '../../../hooks/useLocales';
+import { PATH_PAGE } from '../../../routes/paths';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function MultiLanguage() {
@@ -34,7 +29,10 @@ export default function MultiLanguage() {
   const [page, setPage] = useState(2);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
     setPage(newPage);
   };
 
@@ -52,16 +50,20 @@ export default function MultiLanguage() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Multi Language"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Multi Language' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Multi Language' },
+            ]}
             moreLink={[
               'https://react.i18next.com',
-              'https://next.material-ui.com/guides/localization/#main-content'
+              'https://next.material-ui.com/guides/localization/#main-content',
             ]}
           />
         </Container>
@@ -96,7 +98,9 @@ export default function MultiLanguage() {
                 />
                 <Typography variant="h2">{translate('demo.title')}</Typography>
               </Box>
-              <Typography variant="body1">{translate('demo.introduction')}</Typography>
+              <Typography variant="body1">
+                {translate('demo.introduction')}
+              </Typography>
             </Box>
           </Card>
 

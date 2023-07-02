@@ -1,59 +1,53 @@
 import { useState } from 'react';
-// material
-import SendIcon from '@material-ui/icons/Send';
-import WorkIcon from '@material-ui/icons/Work';
-import WifiIcon from '@material-ui/icons/Wifi';
-import InboxIcon from '@material-ui/icons/Inbox';
-import ImageIcon from '@material-ui/icons/Image';
-import DraftsIcon from '@material-ui/icons/Drafts';
+import {
+  Avatar,
+  Box,
+  Checkbox,
+  Collapse,
+  Container,
+  Divider,
+  Grid,
+  IconButton,
+  List,
+  ListItemAvatar,
+  ListItemButton,
+  ListItemButtonProps,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  ListSubheader,
+  Paper,
+  Switch,
+} from '@mui/material';
+import { styled } from '@mui/material
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import BluetoothIcon from '@material-ui/icons/Bluetooth';
 import CommentIcon from '@material-ui/icons/Comment';
+import DraftsIcon from '@material-ui/icons/Drafts';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import ImageIcon from '@material-ui/icons/Image';
+import InboxIcon from '@material-ui/icons/Inbox';
+import SendIcon from '@material-ui/icons/Send';
 import StarBorder from '@material-ui/icons/StarBorder';
-import BluetoothIcon from '@material-ui/icons/Bluetooth';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import { styled } from '@material-ui/core/styles';
-import {
-  Box,
-  Grid,
-  List,
-  Paper,
-  Avatar,
-  Switch,
-  Divider,
-  Collapse,
-  Checkbox,
-  Container,
-  IconButton,
-  ListItemText,
-  ListItemIcon,
-  ListSubheader,
-  ListItemButton,
-  ListItemAvatar,
-  ListItemSecondaryAction,
-  ListItemButtonProps
-} from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+import WifiIcon from '@material-ui/icons/Wifi';
+import WorkIcon from '@material-ui/icons/Work';
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 const ListWrapperStyle = styled(Paper)(({ theme }) => ({
   width: '100%',
-  border: `solid 1px ${theme.palette.divider}`
+  border: `solid 1px ${theme.palette.divider}`,
 }));
-
-// ----------------------------------------------------------------------
 
 function ListItemLink(props: ListItemButtonProps<'a', { button?: true }>) {
   return <ListItemButton component="a" {...props} />;
@@ -107,13 +101,17 @@ export default function ListsComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Lists"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Lists' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Lists' },
+            ]}
             moreLink="https://next.material-ui.com/components/lists"
           />
         </Container>
@@ -225,7 +223,10 @@ export default function ListsComponent() {
                         <BeachAccessIcon />
                       </Avatar>
                     </ListItemAvatar>
-                    <ListItemText primary="Vacation" secondary="July 20, 2014" />
+                    <ListItemText
+                      primary="Vacation"
+                      secondary="July 20, 2014"
+                    />
                   </ListItemButton>
                 </List>
               </ListWrapperStyle>
@@ -298,7 +299,10 @@ export default function ListsComponent() {
                             inputProps={{ 'aria-labelledby': labelId }}
                           />
                         </ListItemIcon>
-                        <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                        <ListItemText
+                          id={labelId}
+                          primary={`Line item ${value + 1}`}
+                        />
                         <ListItemSecondaryAction>
                           <IconButton edge="end">
                             <CommentIcon />
@@ -327,7 +331,7 @@ export default function ListsComponent() {
                         onChange={handleToggle('wifi')}
                         checked={toggle.indexOf('wifi') !== -1}
                         inputProps={{
-                          'aria-labelledby': 'switch-list-label-wifi'
+                          'aria-labelledby': 'switch-list-label-wifi',
                         }}
                       />
                     </ListItemSecondaryAction>
@@ -336,14 +340,17 @@ export default function ListsComponent() {
                     <ListItemIcon>
                       <BluetoothIcon />
                     </ListItemIcon>
-                    <ListItemText id="switch-list-label-bluetooth" primary="Bluetooth" />
+                    <ListItemText
+                      id="switch-list-label-bluetooth"
+                      primary="Bluetooth"
+                    />
                     <ListItemSecondaryAction>
                       <Switch
                         edge="end"
                         onChange={handleToggle('bluetooth')}
                         checked={toggle.indexOf('bluetooth') !== -1}
                         inputProps={{
-                          'aria-labelledby': 'switch-list-label-bluetooth'
+                          'aria-labelledby': 'switch-list-label-bluetooth',
                         }}
                       />
                     </ListItemSecondaryAction>

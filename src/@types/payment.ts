@@ -1,7 +1,5 @@
 import { FormikProps } from 'formik';
 
-// ----------------------------------------------------------------------
-
 export type InitialValues = {
   name: string;
   phone: string;

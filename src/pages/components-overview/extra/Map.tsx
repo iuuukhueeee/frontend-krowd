@@ -1,25 +1,28 @@
+import { lazy, Suspense } from 'react';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+  Skeleton,
+} from '@mui/material';
+import { styled } from '@mui/material
 import mapboxgl from 'mapbox-gl';
-import { Suspense, lazy } from 'react';
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Grid, Card, Skeleton, Container, CardHeader, CardContent } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
 import { cities as CITIES } from '../../../components/map/assets/cities';
 import { countries as COUNTRIES } from '../../../components/map/assets/countries';
+import Page from '../../../components/Page';
 //
 import { mapConfig } from '../../../config';
-
-// ----------------------------------------------------------------------
-
-// FIX DISPLAY ERROR ON PRODUCTION
+import { PATH_PAGE } from '../../../routes/paths';
 
 // @ts-ignore
 // eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved
-mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+mapboxgl.workerClass =
+  require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const THEMES = {
   streets: 'mapbox://styles/mapbox/streets-v11',
@@ -27,19 +30,19 @@ const THEMES = {
   light: 'mapbox://styles/mapbox/light-v10',
   dark: 'mapbox://styles/mapbox/dark-v10',
   satellite: 'mapbox://styles/mapbox/satellite-v9',
-  satelliteStreets: 'mapbox://styles/mapbox/satellite-streets-v11'
+  satelliteStreets: 'mapbox://styles/mapbox/satellite-streets-v11',
 };
 
 const baseSettings = {
   mapboxApiAccessToken: mapConfig,
   width: '100%',
   height: '100%',
-  minZoom: 1
+  minZoom: 1,
 };
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 const MapWrapperStyle = styled('div')(({ theme }) => ({
@@ -49,30 +52,58 @@ const MapWrapperStyle = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
   '& .mapboxgl-ctrl-logo, .mapboxgl-ctrl-bottom-right': {
-    display: 'none'
-  }
+    display: 'none',
+  },
 }));
-
-// ----------------------------------------------------------------------
 
 const MapHeatmap = lazy(() => import('../../../components/map/map-heatmap'));
 const MapGeojson = lazy(() => import('../../../components/map/map-geojson'));
 const MapClusters = lazy(() => import('../../../components/map/MapClusters'));
-const MapChangeTheme = lazy(() => import('../../../components/map/map-change-theme'));
-const MapZoomToBounds = lazy(() => import('../../../components/map/MapZoomToBounds'));
-const MapMarkersPopups = lazy(() => import('../../../components/map/MapMarkersPopups'));
-const MapDeckglOverlay = lazy(() => import('../../../components/map/MapDeckglOverlay'));
-const MapDynamicStyling = lazy(() => import('../../../components/map/map-dynamic-styling'));
-const MapInteraction = lazy(() => import('../../../components/map/map-interaction'));
-const MapDraggableMarkers = lazy(() => import('../../../components/map/map-draggable-markers'));
-const MapGeoJSONAnimation = lazy(() => import('../../../components/map/MapGeoJSONAnimation'));
-const MapHighlightByFilter = lazy(() => import('../../../components/map/MapHighlightByFilter'));
-const MapViewportAnimation = lazy(() => import('../../../components/map/map-viewport-animation'));
+const MapChangeTheme = lazy(
+  () => import('../../../components/map/map-change-theme')
+);
+const MapZoomToBounds = lazy(
+  () => import('../../../components/map/MapZoomToBounds')
+);
+const MapMarkersPopups = lazy(
+  () => import('../../../components/map/MapMarkersPopups')
+);
+const MapDeckglOverlay = lazy(
+  () => import('../../../components/map/MapDeckglOverlay')
+);
+const MapDynamicStyling = lazy(
+  () => import('../../../components/map/map-dynamic-styling')
+);
+const MapInteraction = lazy(
+  () => import('../../../components/map/map-interaction')
+);
+const MapDraggableMarkers = lazy(
+  () => import('../../../components/map/map-draggable-markers')
+);
+const MapGeoJSONAnimation = lazy(
+  () => import('../../../components/map/MapGeoJSONAnimation')
+);
+const MapHighlightByFilter = lazy(
+  () => import('../../../components/map/MapHighlightByFilter')
+);
+const MapViewportAnimation = lazy(
+  () => import('../../../components/map/map-viewport-animation')
+);
 
 const SkeletonLoad = (
   <>
-    <Skeleton width="100%" height={560} variant="rectangular" sx={{ borderRadius: 2, mb: 5 }} />
-    <Skeleton width="100%" height={560} variant="rectangular" sx={{ borderRadius: 2 }} />
+    <Skeleton
+      width="100%"
+      height={560}
+      variant="rectangular"
+      sx={{ borderRadius: 2, mb: 5 }}
+    />
+    <Skeleton
+      width="100%"
+      height={560}
+      variant="rectangular"
+      sx={{ borderRadius: 2 }}
+    />
   </>
 );
 
@@ -84,14 +115,21 @@ export default function Map() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Map"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Map' }]}
-            moreLink={['http://visgl.github.io/react-map-gl', 'https://docs.mapbox.com-js/example']}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Map' },
+            ]}
+            moreLink={[
+              'http://visgl.github.io/react-map-gl',
+              'https://docs.mapbox.com-js/example',
+            ]}
           />
         </Container>
       </Box>
@@ -126,7 +164,11 @@ export default function Map() {
                 <CardHeader title="Map Markers & Popups" />
                 <CardContent>
                   <MapWrapperStyle>
-                    <MapMarkersPopups {...baseSettings} data={COUNTRIES} mapStyle={THEMES.light} />
+                    <MapMarkersPopups
+                      {...baseSettings}
+                      data={COUNTRIES}
+                      mapStyle={THEMES.light}
+                    />
                   </MapWrapperStyle>
                 </CardContent>
               </Card>
@@ -137,7 +179,10 @@ export default function Map() {
                 <CardHeader title="Map Draggable Markers" />
                 <CardContent>
                   <MapWrapperStyle>
-                    <MapDraggableMarkers {...baseSettings} mapStyle={THEMES.light} />
+                    <MapDraggableMarkers
+                      {...baseSettings}
+                      mapStyle={THEMES.light}
+                    />
                   </MapWrapperStyle>
                 </CardContent>
               </Card>
@@ -159,7 +204,10 @@ export default function Map() {
                 <CardHeader title="Map Geojson Animation" />
                 <CardContent>
                   <MapWrapperStyle>
-                    <MapGeoJSONAnimation {...baseSettings} mapStyle={THEMES.satelliteStreets} />
+                    <MapGeoJSONAnimation
+                      {...baseSettings}
+                      mapStyle={THEMES.satelliteStreets}
+                    />
                   </MapWrapperStyle>
                 </CardContent>
               </Card>
@@ -207,7 +255,10 @@ export default function Map() {
                 <CardHeader title="Map Highlight By Filter" />
                 <CardContent>
                   <MapWrapperStyle>
-                    <MapHighlightByFilter {...baseSettings} mapStyle={THEMES.light} />
+                    <MapHighlightByFilter
+                      {...baseSettings}
+                      mapStyle={THEMES.light}
+                    />
                   </MapWrapperStyle>
                 </CardContent>
               </Card>
@@ -229,7 +280,10 @@ export default function Map() {
                 <CardHeader title="Map Deckgl Overlay" />
                 <CardContent>
                   <MapWrapperStyle>
-                    <MapDeckglOverlay {...baseSettings} mapStyle={THEMES.light} />
+                    <MapDeckglOverlay
+                      {...baseSettings}
+                      mapStyle={THEMES.light}
+                    />
                   </MapWrapperStyle>
                 </CardContent>
               </Card>

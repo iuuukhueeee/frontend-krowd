@@ -1,24 +1,28 @@
 import { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { Auth0Client } from '@auth0/auth0-spa-js';
+
 // @types
-import { ActionMap, AuthState, AuthUser, Auth0ContextType } from '../@types/authentication';
+import {
+  ActionMap,
+  Auth0ContextType,
+  AuthState,
+  AuthUser,
+} from '../@types/authentication';
 //
 import { auth0Config } from '../config';
-
-// ----------------------------------------------------------------------
 
 let auth0Client: Auth0Client | null = null;
 
 const initialState: AuthState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 enum Types {
   init = 'INITIALIZE',
   login = 'LOGIN',
-  logout = 'LOGOUT'
+  logout = 'LOGOUT',
 }
 
 type Auth0AuthPayload = {
@@ -32,7 +36,8 @@ type Auth0AuthPayload = {
   [Types.logout]: undefined;
 };
 
-type Auth0Actions = ActionMap<Auth0AuthPayload>[keyof ActionMap<Auth0AuthPayload>];
+type Auth0Actions =
+  ActionMap<Auth0AuthPayload>[keyof ActionMap<Auth0AuthPayload>];
 
 const reducer = (state: AuthState, action: Auth0Actions) => {
   if (action.type === Types.init) {
@@ -41,7 +46,7 @@ const reducer = (state: AuthState, action: Auth0Actions) => {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   }
   if (action.type === Types.login) {
@@ -52,7 +57,7 @@ const reducer = (state: AuthState, action: Auth0Actions) => {
     return {
       ...state,
       isAuthenticated: false,
-      user: null
+      user: null,
     };
   }
   return state;
@@ -69,7 +74,7 @@ function AuthProvider({ children }: { children: ReactNode }) {
         auth0Client = new Auth0Client({
           client_id: auth0Config.clientId || '',
           domain: auth0Config.domain || '',
-          redirect_uri: window.location.origin
+          redirect_uri: window.location.origin,
         });
 
         await auth0Client.checkSession();
@@ -81,19 +86,19 @@ function AuthProvider({ children }: { children: ReactNode }) {
 
           dispatch({
             type: Types.init,
-            payload: { isAuthenticated, user: user || null }
+            payload: { isAuthenticated, user: user || null },
           });
         } else {
           dispatch({
             type: Types.init,
-            payload: { isAuthenticated, user: null }
+            payload: { isAuthenticated, user: null },
           });
         }
       } catch (err) {
         console.error(err);
         dispatch({
           type: Types.init,
-          payload: { isAuthenticated: false, user: null }
+          payload: { isAuthenticated: false, user: null },
         });
       }
     };
@@ -130,12 +135,12 @@ function AuthProvider({ children }: { children: ReactNode }) {
           photoURL: state?.user?.picture,
           email: state?.user?.email,
           displayName: 'Jaydon Frankie',
-          role: 'admin'
+          role: 'admin',
         },
         login,
         logout,
         resetPassword,
-        updateProfile
+        updateProfile,
       }}
     >
       {children}

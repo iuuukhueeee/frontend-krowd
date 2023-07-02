@@ -2,8 +2,6 @@ import { forwardRef } from 'react';
 import { Avatar, AvatarProps } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-// ----------------------------------------------------------------------
-
 type AvatarColor =
   | 'default'
   | 'primary'
@@ -12,8 +10,6 @@ type AvatarColor =
   | 'success'
   | 'warning'
   | 'error';
-
-// ----------------------------------------------------------------------
 
 export interface MAvatarProps extends AvatarProps {
   color?: AvatarColor;

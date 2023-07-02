@@ -1,81 +1,71 @@
 import { Variants } from 'framer-motion';
+
 import {
-  // Slide
-  varSlideInUp,
-  varSlideInDown,
-  varSlideInLeft,
-  varSlideInRight,
-  varSlideOutUp,
-  varSlideOutDown,
-  varSlideOutLeft,
-  varSlideOutRight,
-  // Fade
-  varFadeIn,
-  varFadeInUp,
-  varFadeInDown,
-  varFadeInLeft,
-  varFadeInRight,
-  varFadeOut,
-  varFadeOutUp,
-  varFadeOutDown,
-  varFadeOutLeft,
-  varFadeOutRight,
-  // Zoom
-  varZoomIn,
-  varZoomInLeft,
-  varZoomInRight,
-  varZoomInUp,
-  varZoomInDown,
-  varZoomOut,
-  varZoomOutUp,
-  varZoomOutDown,
-  varZoomOutLeft,
-  varZoomOutRight,
-  // Bounce
   varBounceIn,
-  varBounceInUp,
   varBounceInDown,
   varBounceInLeft,
   varBounceInRight,
+  varBounceInUp,
   varBounceOut,
-  varBounceOutUp,
   varBounceOutDown,
   varBounceOutLeft,
   varBounceOutRight,
-  // Flip
+  varBounceOutUp,
+  varColor2x,
+  varColor3x,
+  varColor4x,
+  varColor5x,
+  varFadeIn,
+  varFadeInDown,
+  varFadeInLeft,
+  varFadeInRight,
+  varFadeInUp,
+  varFadeOut,
+  varFadeOutDown,
+  varFadeOutLeft,
+  varFadeOutRight,
+  varFadeOutUp,
   varFlipInX,
   varFlipInY,
   varFlipOutX,
   varFlipOutY,
-  // Scale
+  varKenburnsBottom,
+  varKenburnsLeft,
+  varKenburnsRight,
+  varKenburnsTop,
+  varPanBottom,
+  varPanLeft,
+  varPanRight,
+  varPanTop,
+  varRotateIn,
+  varRotateOut,
   varScaleInX,
   varScaleInY,
   varScaleOutX,
   varScaleOutY,
-  // Rotate
-  varRotateIn,
-  varRotateOut,
-  // Background
-  varKenburnsTop,
-  varKenburnsBottom,
-  varKenburnsLeft,
-  varKenburnsRight,
-  varPanTop,
-  varPanBottom,
-  varPanLeft,
-  varPanRight,
-  varColor2x,
-  varColor3x,
-  varColor4x,
-  varColor5x
+  varSlideInDown,
+  varSlideInLeft,
+  varSlideInRight,
+  varSlideInUp,
+  varSlideOutDown,
+  varSlideOutLeft,
+  varSlideOutRight,
+  varSlideOutUp,
+  varZoomIn,
+  varZoomInDown,
+  varZoomInLeft,
+  varZoomInRight,
+  varZoomInUp,
+  varZoomOut,
+  varZoomOutDown,
+  varZoomOutLeft,
+  varZoomOutRight,
+  varZoomOutUp,
 } from '../../../../components/animate';
-
-// ----------------------------------------------------------------------
 
 export default function getVariant(variant: string): Variants | undefined {
   let value;
   switch (variant) {
-    // Slide
     case 'slideInUp':
       value = varSlideInUp;
       break;
@@ -100,7 +90,6 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'slideOutRight':
       value = varSlideOutRight;
       break;
-    // Fade
     case 'fadeIn':
       value = varFadeIn;
       break;
@@ -131,7 +120,6 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'fadeOutRight':
       value = varFadeOutRight;
       break;
-    // Zoom
     case 'zoomIn':
       value = varZoomIn;
       break;
@@ -162,7 +150,6 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'zoomOutDown':
       value = varZoomOutDown;
       break;
-    // Bounce
     case 'bounceIn':
       value = varBounceIn;
       break;
@@ -193,7 +180,6 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'bounceOutRight':
       value = varBounceOutRight;
       break;
-    // Flip
     case 'flipInX':
       value = varFlipInX;
       break;
@@ -206,7 +192,6 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'flipOutY':
       value = varFlipOutY;
       break;
-    // Scale
     case 'scaleInX':
       value = varScaleInX;
       break;
@@ -219,14 +204,12 @@ export default function getVariant(variant: string): Variants | undefined {
     case 'scaleOutY':
       value = varScaleOutY;
       break;
-    // Rotate
     case 'rotateIn':
       value = varRotateIn;
       break;
     case 'rotateOut':
       value = varRotateOut;
       break;
-    // Background
     case 'kenburnsTop':
       value = varKenburnsTop;
       break;

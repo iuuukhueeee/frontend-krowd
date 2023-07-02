@@ -76,8 +76,6 @@ const variantScreenRight = {
   animate: { ...COMMON, translateX: '50%', translateY: -40, opacity: 1 },
 };
 
-// ----------------------------------------------------------------------
-
 export default function LandingHugePackElements() {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';

@@ -1,9 +1,7 @@
-// material
-import { Box, Grid, Paper, LinearProgress } from '@material-ui/core';
+import { Box, Grid, LinearProgress, Paper } from '@mui/material';
+
 //
 import { Label } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   p: 2,
@@ -12,10 +10,8 @@ const style = {
   flexWrap: 'wrap',
   alignItems: 'center',
   justifyContent: 'center',
-  '& > *': { m: 1 }
+  '& > *': { m: 1 },
 } as const;
-
-// ----------------------------------------------------------------------
 
 type LinearProps = {
   progress: number;
@@ -44,19 +40,43 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
         <Label title="Linears Determinate" />
         <Paper variant="outlined" sx={style}>
           <Box sx={{ width: '100%' }}>
-            <LinearProgress variant="determinate" value={progress} color="inherit" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="inherit"
+            />
             <br />
             <LinearProgress variant="determinate" value={progress} />
             <br />
-            <LinearProgress variant="determinate" value={progress} color="secondary" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="secondary"
+            />
             <br />
-            <LinearProgress variant="determinate" value={progress} color="info" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="info"
+            />
             <br />
-            <LinearProgress variant="determinate" value={progress} color="success" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="success"
+            />
             <br />
-            <LinearProgress variant="determinate" value={progress} color="warning" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="warning"
+            />
             <br />
-            <LinearProgress variant="determinate" value={progress} color="error" />
+            <LinearProgress
+              variant="determinate"
+              value={progress}
+              color="error"
+            />
           </Box>
         </Paper>
       </Grid>
@@ -72,7 +92,11 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
               color="inherit"
             />
             <br />
-            <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} />
+            <LinearProgress
+              variant="buffer"
+              value={progress}
+              valueBuffer={buffer}
+            />
             <br />
             <LinearProgress
               variant="buffer"
@@ -81,7 +105,12 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
               color="secondary"
             />
             <br />
-            <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} color="info" />
+            <LinearProgress
+              variant="buffer"
+              value={progress}
+              valueBuffer={buffer}
+              color="info"
+            />
             <br />
             <LinearProgress
               variant="buffer"
@@ -97,7 +126,12 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
               color="warning"
             />
             <br />
-            <LinearProgress variant="buffer" value={progress} valueBuffer={buffer} color="error" />
+            <LinearProgress
+              variant="buffer"
+              value={progress}
+              valueBuffer={buffer}
+              color="error"
+            />
           </Box>
         </Paper>
       </Grid>
@@ -106,9 +140,18 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
         <Label title="Linears Query" />
         <Paper variant="outlined" sx={style}>
           <Box sx={{ width: '100%' }}>
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} color="inherit" />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+              color="inherit"
+            />
             <br />
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+            />
             <br />
             <LinearProgress
               variant="query"
@@ -117,13 +160,33 @@ export default function ProgressLinear({ progress, buffer }: LinearProps) {
               color="secondary"
             />
             <br />
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} color="info" />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+              color="info"
+            />
             <br />
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} color="success" />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+              color="success"
+            />
             <br />
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} color="warning" />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+              color="warning"
+            />
             <br />
-            <LinearProgress variant="query" value={progress} valueBuffer={buffer} color="error" />
+            <LinearProgress
+              variant="query"
+              value={progress}
+              valueBuffer={buffer}
+              color="error"
+            />
           </Box>
         </Paper>
       </Grid>

@@ -1,17 +1,15 @@
 import { useState } from 'react';
-// material
-import { Box, TextField, Typography, Stack } from '@material-ui/core';
 import {
   DateRange,
   DateRangePicker,
-  MobileDateRangePicker,
   DesktopDateRangePicker,
-  StaticDateRangePicker
+  MobileDateRangePicker,
+  StaticDateRangePicker,
 } from '@material-ui/lab';
+import { Box, Stack, TextField, Typography } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 export default function PickerDateRange() {
   const [value, setValue] = useState<DateRange<Date>>([null, null]);

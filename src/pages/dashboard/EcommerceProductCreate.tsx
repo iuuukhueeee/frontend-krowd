@@ -1,32 +1,30 @@
 import { useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
+import { Container } from '@mui/material';
 import { paramCase } from 'change-case';
-import { useParams, useLocation } from 'react-router-dom';
-// material
-import { Container } from '@material-ui/core';
-// redux
-import { useDispatch, useSelector } from '../../redux/store';
-import { getProducts } from '../../redux/slices/product';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
+
 // @types
 import { ProductState } from '../../@types/products';
-// components
-import Page from '../../components/Page';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
 import ProductNewForm from '../../components/_dashboard/e-commerce/ProductNewForm';
-
-// ----------------------------------------------------------------------
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
+import { getProducts } from '../../redux/slices/product';
+import { useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 export default function EcommerceProductCreate() {
   const { themeStretch } = useSettings();
   const dispatch = useDispatch();
   const { pathname } = useLocation();
   const { name } = useParams();
-  const { products } = useSelector((state: { product: ProductState }) => state.product);
+  const { products } = useSelector(
+    (state: { product: ProductState }) => state.product
+  );
   const isEdit = pathname.includes('edit');
-  const currentProduct = products.find((product) => paramCase(product.name) === name);
+  const currentProduct = products.find(
+    (product) => paramCase(product.name) === name
+  );
 
   useEffect(() => {
     dispatch(getProducts());
@@ -41,9 +39,9 @@ export default function EcommerceProductCreate() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root
+              href: PATH_DASHBOARD.eCommerce.root,
             },
-            { name: !isEdit ? 'New product' : name }
+            { name: !isEdit ? 'New product' : name },
           ]}
         />
 

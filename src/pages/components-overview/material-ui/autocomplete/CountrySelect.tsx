@@ -1,12 +1,12 @@
-import { Box, TextField, Autocomplete } from '@material-ui/core';
-
-// ----------------------------------------------------------------------
+import { Autocomplete, Box, TextField } from '@mui/material';
 
 function countryToFlag(isoCode: string) {
   return typeof String.fromCodePoint !== 'undefined'
     ? isoCode
         .toUpperCase()
-        .replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397))
+        .replace(/./g, (char) =>
+          String.fromCodePoint(char.charCodeAt(0) + 127397)
+        )
     : isoCode;
 }
 
@@ -25,8 +25,8 @@ export default function CountrySelect({ options }: CountrySelectProps) {
         width: '100%',
         '& .MuiAutocomplete-option': {
           typography: 'body2',
-          '& > span': { mr: 1, fontSize: 20 }
-        }
+          '& > span': { mr: 1, fontSize: 20 },
+        },
       }}
     >
       <Autocomplete
@@ -47,7 +47,7 @@ export default function CountrySelect({ options }: CountrySelectProps) {
             label="Choose a country"
             inputProps={{
               ...params.inputProps,
-              autoComplete: 'new-password'
+              autoComplete: 'new-password',
             }}
           />
         )}

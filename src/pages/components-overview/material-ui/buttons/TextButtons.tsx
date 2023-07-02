@@ -1,18 +1,16 @@
-// material
 import AlarmIcon from '@material-ui/icons/Alarm';
-import { Grid, Button } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import { Button, Grid } from '@mui/material';
+
 //
 import { Block } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { mx: '8px !important' }
+  '& > *': { mx: '8px !important' },
 } as const;
 
 export default function TextButtons() {
@@ -52,7 +50,11 @@ export default function TextButtons() {
           <LoadingButton loading loadingIndicator="Loading...">
             Fetch data
           </LoadingButton>
-          <LoadingButton loading loadingPosition="start" startIcon={<AlarmIcon />}>
+          <LoadingButton
+            loading
+            loadingPosition="start"
+            startIcon={<AlarmIcon />}
+          >
             Save
           </LoadingButton>
         </Block>

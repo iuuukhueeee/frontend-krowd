@@ -1,4 +1,3 @@
-// material
 import { styled } from '@mui/material';
 
 import Page from '@/shared/components/page';
@@ -12,9 +11,6 @@ import {
   LandingMinimal,
   LandingThemeColor,
 } from '../components';
-// components
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(() => ({
   height: '100%',
 }));
@@ -24,8 +20,6 @@ const ContentStyle = styled('div')(({ theme }) => ({
   position: 'relative',
   backgroundColor: theme.palette.background.default,
 }));
-
-// ----------------------------------------------------------------------
 
 export default function LandingPage() {
   return (

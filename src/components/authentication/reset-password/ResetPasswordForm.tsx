@@ -1,13 +1,10 @@
-import * as Yup from 'yup';
+import { LoadingButton } from '@mui/lab';
+import { Alert, Stack, TextField } from '@mui/material';
 import { Form, FormikProvider, useFormik } from 'formik';
-// material
-import { TextField, Alert, Stack } from '@material-ui/core';
-import { LoadingButton } from '@material-ui/lab';
-// hooks
+import * as Yup from 'yup';
+
 import useAuth from '../../../hooks/useAuth';
 import useIsMountedRef from '../../../hooks/useIsMountedRef';
-
-// ----------------------------------------------------------------------
 
 type InitialValues = {
   email: string;
@@ -19,17 +16,22 @@ type ResetPasswordFormProps = {
   onGetEmail: (value: string) => void;
 };
 
-export default function ResetPasswordForm({ onSent, onGetEmail }: ResetPasswordFormProps) {
+export default function ResetPasswordForm({
+  onSent,
+  onGetEmail,
+}: ResetPasswordFormProps) {
   const { resetPassword } = useAuth();
   const isMountedRef = useIsMountedRef();
 
   const ResetPasswordSchema = Yup.object().shape({
-    email: Yup.string().email('Email must be a valid email address').required('Email is required')
+    email: Yup.string()
+      .email('Email must be a valid email address')
+      .required('Email is required'),
   });
 
   const formik = useFormik<InitialValues>({
     initialValues: {
-      email: 'demo@minimals.cc'
+      email: 'demo@minimals.cc',
     },
     validationSchema: ResetPasswordSchema,
     onSubmit: async (values, { setErrors, setSubmitting }) => {
@@ -40,14 +42,14 @@ export default function ResetPasswordForm({ onSent, onGetEmail }: ResetPasswordF
           onGetEmail(formik.values.email);
           setSubmitting(false);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         if (isMountedRef.current) {
           setErrors({ afterSubmit: error.message });
           setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   const { errors, touched, isSubmitting, handleSubmit, getFieldProps } = formik;
@@ -56,7 +58,9 @@ export default function ResetPasswordForm({ onSent, onGetEmail }: ResetPasswordF
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3}>
-          {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
+          {errors.afterSubmit && (
+            <Alert severity="error">{errors.afterSubmit}</Alert>
+          )}
 
           <TextField
             fullWidth

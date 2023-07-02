@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 import { FormikProps } from 'formik';
 
 export type UserInvoice = {

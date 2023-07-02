@@ -1,24 +1,24 @@
-import { Icon } from '@iconify/react';
 import { useState } from 'react';
-import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
-// material
+import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill';
+import { Icon } from '@iconify/react';
 import {
   Box,
-  Table,
   Collapse,
-  TableRow,
-  TableHead,
+  IconButton,
+  Table,
   TableBody,
   TableCell,
+  TableHead,
+  TableRow,
   Typography,
-  IconButton
-} from '@material-ui/core';
+} from '@mui/material';
+
 import { createData } from '.';
 
-// ----------------------------------------------------------------------
-
-export default function CollapsibleTableRow(props: { row: ReturnType<typeof createData> }) {
+export default function CollapsibleTableRow(props: {
+  row: ReturnType<typeof createData>;
+}) {
   const { row } = props;
 
   const [open, setOpen] = useState(false);

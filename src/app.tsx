@@ -5,16 +5,24 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const baseTheme = createTheme();
 
+import ThemeConfig from './shared/theme';
+import ThemePrimaryColor from './shared/theme/ThemePrimaryColor';
 import { browserRouter } from './router';
+
+import 'react-quill/dist/quill.snow.css';
+import 'simplebar-react/dist/simplebar.min.css';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
 
 function App() {
   return (
-    <HelmetProvider>
-      <ThemeProvider theme={baseTheme}>
-        <CssBaseline />
-        <RouterProvider router={browserRouter} />
-      </ThemeProvider>
-    </HelmetProvider>
+    <ThemeConfig>
+      <ThemePrimaryColor>
+        <HelmetProvider>
+          <RouterProvider router={browserRouter} />
+        </HelmetProvider>
+      </ThemePrimaryColor>
+    </ThemeConfig>
   );
 }
 

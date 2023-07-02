@@ -1,35 +1,29 @@
-import faker from 'faker';
-import { sum } from 'lodash';
-// material
-import { styled } from '@material-ui/core/styles';
 import {
   Box,
-  Grid,
   Card,
-  Table,
-  Divider,
-  TableRow,
   Container,
+  Divider,
+  Grid,
+  Table,
   TableBody,
-  TableHead,
   TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
   Typography,
-  TableContainer
-} from '@material-ui/core';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// utils
-import { fCurrency } from '../../utils/formatNumber';
-// hooks
-import useSettings from '../../hooks/useSettings';
-// components
-import Page from '../../components/Page';
-import Label from '../../components/Label';
-import Scrollbar from '../../components/Scrollbar';
-import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { InvoiceToolbar } from '../../components/_dashboard/e-commerce/invoice';
+} from '@mui/material';
+import { styled } from '@mui/material
+import faker from 'faker';
+import { sum } from 'lodash';
 
-// ----------------------------------------------------------------------
+import { InvoiceToolbar } from '../../components/_dashboard/e-commerce/invoice';
+import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
+import Label from '../../components/Label';
+import Page from '../../components/Page';
+import Scrollbar from '../../components/Scrollbar';
+import useSettings from '../../hooks/useSettings';
+import { PATH_DASHBOARD } from '../../routes/paths';
+import { fCurrency } from '../../utils/formatNumber';
 
 const INVOICE = {
   id: faker.datatype.uuid(),
@@ -41,32 +35,30 @@ const INVOICE = {
     address: 'DieSachbearbeiter Choriner Straße 49 10435 Berlin',
     company: faker.company.companyName(),
     email: faker.internet.email(),
-    phone: faker.phone.phoneNumberFormat()
+    phone: faker.phone.phoneNumberFormat(),
   },
   invoiceTo: {
     name: faker.name.findName(),
     address: 'Keas 69 Str. 15234, Chalandri Athens, Greece',
     company: faker.company.companyName(),
     email: faker.internet.email(),
-    phone: faker.phone.phoneNumberFormat()
+    phone: faker.phone.phoneNumberFormat(),
   },
   items: [...Array(3)].map(() => ({
     id: faker.datatype.uuid(),
     title: faker.lorem.sentence(),
     description: faker.lorem.lines(),
     qty: faker.datatype.number({ min: 1, max: 5 }),
-    price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 })
-  }))
+    price: faker.datatype.number({ min: 4, max: 99, precision: 0.01 }),
+  })),
 };
 
 const RowResultStyle = styled(TableRow)(({ theme }) => ({
   '& td': {
     paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1)
-  }
+    paddingBottom: theme.spacing(1),
+  },
 }));
-
-// ----------------------------------------------------------------------
 
 export default function EcommerceInvoice() {
   const { themeStretch } = useSettings();
@@ -83,9 +75,9 @@ export default function EcommerceInvoice() {
             { name: 'Dashboard', href: PATH_DASHBOARD.root },
             {
               name: 'E-Commerce',
-              href: PATH_DASHBOARD.eCommerce.root
+              href: PATH_DASHBOARD.eCommerce.root,
             },
-            { name: 'Invoice' }
+            { name: 'Invoice' },
           ]}
         />
 
@@ -104,7 +96,10 @@ export default function EcommerceInvoice() {
 
             <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
               <Box sx={{ textAlign: { sm: 'right' } }}>
-                <Label color="success" sx={{ textTransform: 'uppercase', mb: 1 }}>
+                <Label
+                  color="success"
+                  sx={{ textTransform: 'uppercase', mb: 1 }}
+                >
                   {INVOICE.status}
                 </Label>
                 <Typography variant="h6">INV-{INVOICE.id}</Typography>
@@ -112,21 +107,39 @@ export default function EcommerceInvoice() {
             </Grid>
 
             <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-              <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
+              <Typography
+                paragraph
+                variant="overline"
+                sx={{ color: 'text.disabled' }}
+              >
                 Invoice from
               </Typography>
-              <Typography variant="body2">{INVOICE.invoiceFrom.name}</Typography>
-              <Typography variant="body2">{INVOICE.invoiceFrom.address}</Typography>
-              <Typography variant="body2">Phone: {INVOICE.invoiceFrom.phone}</Typography>
+              <Typography variant="body2">
+                {INVOICE.invoiceFrom.name}
+              </Typography>
+              <Typography variant="body2">
+                {INVOICE.invoiceFrom.address}
+              </Typography>
+              <Typography variant="body2">
+                Phone: {INVOICE.invoiceFrom.phone}
+              </Typography>
             </Grid>
 
             <Grid item xs={12} sm={6} sx={{ mb: 5 }}>
-              <Typography paragraph variant="overline" sx={{ color: 'text.disabled' }}>
+              <Typography
+                paragraph
+                variant="overline"
+                sx={{ color: 'text.disabled' }}
+              >
                 Invoice to
               </Typography>
               <Typography variant="body2">{INVOICE.invoiceTo.name}</Typography>
-              <Typography variant="body2">{INVOICE.invoiceTo.address}</Typography>
-              <Typography variant="body2">Phone: {INVOICE.invoiceTo.phone}</Typography>
+              <Typography variant="body2">
+                {INVOICE.invoiceTo.address}
+              </Typography>
+              <Typography variant="body2">
+                Phone: {INVOICE.invoiceTo.phone}
+              </Typography>
             </Grid>
           </Grid>
 
@@ -135,8 +148,9 @@ export default function EcommerceInvoice() {
               <Table>
                 <TableHead
                   sx={{
-                    borderBottom: (theme) => `solid 1px ${theme.palette.divider}`,
-                    '& th': { backgroundColor: 'transparent' }
+                    borderBottom: (theme) =>
+                      `solid 1px ${theme.palette.divider}`,
+                    '& th': { backgroundColor: 'transparent' },
                   }}
                 >
                   <TableRow>
@@ -153,21 +167,32 @@ export default function EcommerceInvoice() {
                     <TableRow
                       key={index}
                       sx={{
-                        borderBottom: (theme) => `solid 1px ${theme.palette.divider}`
+                        borderBottom: (theme) =>
+                          `solid 1px ${theme.palette.divider}`,
                       }}
                     >
                       <TableCell>{index + 1}</TableCell>
                       <TableCell align="left">
                         <Box sx={{ maxWidth: 560 }}>
-                          <Typography variant="subtitle2">{row.title}</Typography>
-                          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+                          <Typography variant="subtitle2">
+                            {row.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            sx={{ color: 'text.secondary' }}
+                            noWrap
+                          >
                             {row.description}
                           </Typography>
                         </Box>
                       </TableCell>
                       <TableCell align="left">{row.qty}</TableCell>
-                      <TableCell align="right">{fCurrency(row.price)}</TableCell>
-                      <TableCell align="right">{fCurrency(row.price * row.qty)}</TableCell>
+                      <TableCell align="right">
+                        {fCurrency(row.price)}
+                      </TableCell>
+                      <TableCell align="right">
+                        {fCurrency(row.price * row.qty)}
+                      </TableCell>
                     </TableRow>
                   ))}
 
@@ -179,7 +204,9 @@ export default function EcommerceInvoice() {
                     </TableCell>
                     <TableCell align="right" width={120}>
                       <Box sx={{ mt: 2 }} />
-                      <Typography variant="body1">{fCurrency(subTotal)}</Typography>
+                      <Typography variant="body1">
+                        {fCurrency(subTotal)}
+                      </Typography>
                     </TableCell>
                   </RowResultStyle>
                   <RowResultStyle>
@@ -199,7 +226,9 @@ export default function EcommerceInvoice() {
                       <Typography variant="body1">Taxes</Typography>
                     </TableCell>
                     <TableCell align="right" width={120}>
-                      <Typography variant="body1">{fCurrency(INVOICE.taxes)}</Typography>
+                      <Typography variant="body1">
+                        {fCurrency(INVOICE.taxes)}
+                      </Typography>
                     </TableCell>
                   </RowResultStyle>
                   <RowResultStyle>
@@ -222,8 +251,8 @@ export default function EcommerceInvoice() {
             <Grid item xs={12} md={9} sx={{ py: 3 }}>
               <Typography variant="subtitle2">NOTES</Typography>
               <Typography variant="body2">
-                We appreciate your business. Should you need us to add VAT or extra notes let us
-                know!
+                We appreciate your business. Should you need us to add VAT or
+                extra notes let us know!
               </Typography>
             </Grid>
             <Grid item xs={12} md={3} sx={{ py: 3, textAlign: 'right' }}>

@@ -7,8 +7,6 @@ import AppleIcon from '@material-ui/icons/Apple';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import AirplanemodeActiveIcon from '@material-ui/icons/AirplanemodeActive';
 
-// ----------------------------------------------------------------------
-
 function IconMaterial() {
   return (
     <>
@@ -28,14 +26,12 @@ export const iconify = `
 ~~~ js
 
 import { Icon } from '@iconify/react';
-import { SvgIcon } from '@material-ui/core';
+import { SvgIcon } from '@mui/material';
 import clockFill from '@iconify/icons-eva/clock-fill';
 import chargingFill from '@iconify/icons-eva/charging-fill';
 import alertCircleFill from '@iconify/icons-eva/alert-circle-fill';
 import colorPaletteFill from '@iconify/icons-eva/color-palette-fill';
 import arrowCircleDownFill from '@iconify/icons-eva/arrow-circle-down-fill';
-
-// ----------------------------------------------------------------------
 
 function IconIconify() {
   return (
@@ -66,8 +62,6 @@ export const local = `
 ~~~ js
 
 import SvgIconStyle from 'src/components/SvgIconStyle';
-
-// ----------------------------------------------------------------------
 
 function IconLocal() {
   return (

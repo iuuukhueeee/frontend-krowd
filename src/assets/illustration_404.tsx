@@ -1,7 +1,5 @@
 import { Box, BoxProps, useTheme } from '@mui/material';
 
-// ----------------------------------------------------------------------
-
 export default function PageNotFoundIllustration({ ...other }: BoxProps) {
   const theme = useTheme();
   const PRIMARY_MAIN = theme.palette.primary.main;

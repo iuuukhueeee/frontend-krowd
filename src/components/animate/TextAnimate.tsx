@@ -1,11 +1,8 @@
-// material
 import { Box, BoxProps } from '@mui/material';
 import { motion, MotionProps } from 'framer-motion';
 
 //
 import { varFadeInUp } from './variants';
-
-// ----------------------------------------------------------------------
 
 type Props = BoxProps & MotionProps;
 

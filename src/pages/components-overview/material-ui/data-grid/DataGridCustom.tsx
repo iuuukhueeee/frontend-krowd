@@ -1,29 +1,31 @@
-import faker from 'faker';
-import { sample } from 'lodash';
-import { Icon } from '@iconify/react';
-import moreVerticalFill from '@iconify/icons-eva/more-vertical-fill';
 import checkmarkCircle2Fill from '@iconify/icons-eva/checkmark-circle-2-fill';
-// material
-import { Stack, Typography, Box, Rating, Pagination, LinearProgress } from '@material-ui/core';
+import moreVerticalFill from '@iconify/icons-eva/more-vertical-fill';
+import { Icon } from '@iconify/react';
 import {
   DataGrid,
+  getGridNumericColumnOperators,
   GridColDef,
+  GridFilterInputValueProps,
   GridToolbar,
   useGridSlotComponentProps,
-  GridFilterInputValueProps,
-  getGridNumericColumnOperators
 } from '@material-ui/data-grid';
-// utils
+import {
+  Box,
+  LinearProgress,
+  Pagination,
+  Rating,
+  Stack,
+  Typography,
+} from '@mui/material';
+import faker from 'faker';
+import { sample } from 'lodash';
+
+import { MAvatar, MIconButton } from '../../../../components/@material-extend';
+import Label from '../../../../components/Label';
 import createAvatar from '../../../../utils/createAvatar';
 import { fPercent } from '../../../../utils/formatNumber';
-// components
-import Label from '../../../../components/Label';
-import { MIconButton, MAvatar } from '../../../../components/@material-extend';
-
-// ----------------------------------------------------------------------
 
 const columns: GridColDef[] = [
-  // OPTIONS
   // https://material-ui.com/api/data-grid/grid-col-def/#main-content
   // - hide: false (default)
   // - editable: false (default)
@@ -31,8 +33,6 @@ const columns: GridColDef[] = [
   // - sortable: true (default)
   // - disableColumnMenu: false (default)
 
-  // FIELD TYPES
-  // --------------------
   // 'string' (default)
   // 'number'
   // 'date'
@@ -42,7 +42,7 @@ const columns: GridColDef[] = [
 
   {
     field: 'id',
-    hide: true
+    hide: true,
   },
   {
     field: 'avatar',
@@ -55,16 +55,19 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       const getAvatar = params.getValue(params.id, 'name') as string;
       return (
-        <MAvatar color={createAvatar(getAvatar).color} sx={{ width: 36, height: 36 }}>
+        <MAvatar
+          color={createAvatar(getAvatar).color}
+          sx={{ width: 36, height: 36 }}
+        >
           {createAvatar(getAvatar).name}
         </MAvatar>
       );
-    }
+    },
   },
   {
     field: 'name',
     headerName: 'Name',
-    flex: 1
+    flex: 1,
   },
   {
     field: 'email',
@@ -77,7 +80,7 @@ const columns: GridColDef[] = [
           {getEmail}
         </Typography>
       );
-    }
+    },
   },
   {
     field: 'lastLogin',
@@ -85,7 +88,7 @@ const columns: GridColDef[] = [
     headerName: 'Last login',
     width: 200,
     align: 'right',
-    headerAlign: 'right'
+    headerAlign: 'right',
   },
   {
     field: 'rating',
@@ -96,7 +99,7 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       const getRating = params.getValue(params.id, 'rating') as number;
       return <Rating size="small" value={getRating} precision={0.5} readOnly />;
-    }
+    },
   },
   {
     field: 'status',
@@ -109,14 +112,16 @@ const columns: GridColDef[] = [
       return (
         <Label
           color={
-            (getStatus === 'busy' && 'error') || (getStatus === 'away' && 'warning') || 'success'
+            (getStatus === 'busy' && 'error') ||
+            (getStatus === 'away' && 'warning') ||
+            'success'
           }
           sx={{ textTransform: 'capitalize', mx: 'auto' }}
         >
           {getStatus}
         </Label>
       );
-    }
+    },
   },
   {
     field: 'isAdmin',
@@ -137,7 +142,7 @@ const columns: GridColDef[] = [
           )}
         </Stack>
       );
-    }
+    },
   },
   {
     field: 'performance',
@@ -147,11 +152,19 @@ const columns: GridColDef[] = [
     renderCell: (params) => {
       const value = params.getValue(params.id, 'performance') as number;
       return (
-        <Stack direction="row" alignItems="center" sx={{ px: 2, width: 1, height: 1 }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ px: 2, width: 1, height: 1 }}
+        >
           <LinearProgress
             value={value}
             variant="determinate"
-            color={(value < 30 && 'error') || (value > 30 && value < 70 && 'warning') || 'primary'}
+            color={
+              (value < 30 && 'error') ||
+              (value > 30 && value < 70 && 'warning') ||
+              'primary'
+            }
             sx={{ width: 1, height: 6 }}
           />
           <Typography variant="caption" sx={{ width: 90 }}>
@@ -159,7 +172,7 @@ const columns: GridColDef[] = [
           </Typography>
         </Stack>
       );
-    }
+    },
   },
   {
     field: 'action',
@@ -177,11 +190,15 @@ const columns: GridColDef[] = [
 
       return (
         <MIconButton onClick={handleClick}>
-          <Box component={Icon} icon={moreVerticalFill} sx={{ width: 20, height: 20 }} />
+          <Box
+            component={Icon}
+            icon={moreVerticalFill}
+            sx={{ width: 20, height: 20 }}
+          />
         </MIconButton>
       );
-    }
-  }
+    },
+  },
 ];
 
 const rows = [...Array(100)].map((_, index) => {
@@ -195,11 +212,9 @@ const rows = [...Array(100)].map((_, index) => {
     performance: faker.datatype.number({ min: 9, max: 99, precision: 0.1 }),
     rating: faker.datatype.number({ min: 0, max: 5, precision: 0.5 }),
     status: sample(['online', 'away', 'busy']),
-    isAdmin: faker.datatype.boolean()
+    isAdmin: faker.datatype.boolean(),
   };
 });
-
-// ----------------------------------------------------------------------
 
 function CustomPagination() {
   const { state, apiRef } = useGridSlotComponentProps();
@@ -216,7 +231,9 @@ function CustomPagination() {
 
 function RatingInputValue({ item, applyValue }: GridFilterInputValueProps) {
   return (
-    <Box sx={{ pl: 2, height: 1, alignItems: 'center', display: 'inline-flex' }}>
+    <Box
+      sx={{ pl: 2, height: 1, alignItems: 'center', display: 'inline-flex' }}
+    >
       <Rating
         size="small"
         name="custom-rating-filter-operator"
@@ -236,14 +253,16 @@ export default function DataGridCustom() {
     const ratingColumn = columns.find((column) => column.field === 'rating');
     const ratingColIndex = columns.findIndex((col) => col.field === 'rating');
 
-    const ratingFilterOperators = getGridNumericColumnOperators().map((operator) => ({
-      ...operator,
-      InputComponent: RatingInputValue
-    }));
+    const ratingFilterOperators = getGridNumericColumnOperators().map(
+      (operator) => ({
+        ...operator,
+        InputComponent: RatingInputValue,
+      })
+    );
 
     columns[ratingColIndex] = {
       ...ratingColumn,
-      filterOperators: ratingFilterOperators
+      filterOperators: ratingFilterOperators,
     } as GridColDef;
   }
 
@@ -255,10 +274,10 @@ export default function DataGridCustom() {
       pageSize={10}
       components={{
         Toolbar: GridToolbar,
-        Pagination: CustomPagination
+        Pagination: CustomPagination,
       }}
       filterModel={{
-        items: [{ columnField: 'rating', value: '1.5', operatorValue: '>=' }]
+        items: [{ columnField: 'rating', value: '1.5', operatorValue: '>=' }],
       }}
     />
   );

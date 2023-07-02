@@ -1,39 +1,49 @@
-import FullCalendar, { DateSelectArg, EventClickArg, EventDropArg } from '@fullcalendar/react'; // => request placed at the top
-import listPlugin from '@fullcalendar/list';
+import { useEffect, useRef, useState } from 'react';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin, {
+  EventResizeDoneArg,
+} from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list';
+import FullCalendar, {
+  DateSelectArg,
+  EventClickArg,
+  EventDropArg,
+} from '@fullcalendar/react'; // => request placed at the top
 import timeGridPlugin from '@fullcalendar/timegrid';
 import timelinePlugin from '@fullcalendar/timeline';
-import interactionPlugin, { EventResizeDoneArg } from '@fullcalendar/interaction';
-import { Icon } from '@iconify/react';
-import { useSnackbar } from 'notistack5';
 import plusFill from '@iconify/icons-eva/plus-fill';
-import { useState, useRef, useEffect } from 'react';
-// material
-import { useTheme } from '@material-ui/core/styles';
-import { Card, Button, Container, DialogTitle, useMediaQuery } from '@material-ui/core';
-// redux
-import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { Icon } from '@iconify/react';
 import {
-  getEvents,
-  openModal,
-  closeModal,
-  updateEvent,
-  selectEvent,
-  selectRange
-} from '../../redux/slices/calendar';
-// routes
-import { PATH_DASHBOARD } from '../../routes/paths';
-// hooks
-import useSettings from '../../hooks/useSettings';
+  Button,
+  Card,
+  Container,
+  DialogTitle,
+  useMediaQuery,
+} from '@mui/material';
+import { useTheme } from '@mui/material
+import { useSnackbar } from 'notistack5';
+
 // @types
 import { CalendarView } from '../../@types/calendar';
-// components
-import Page from '../../components/Page';
+import {
+  CalendarForm,
+  CalendarStyle,
+  CalendarToolbar,
+} from '../../components/_dashboard/calendar';
 import { DialogAnimate } from '../../components/animate';
 import HeaderBreadcrumbs from '../../components/HeaderBreadcrumbs';
-import { CalendarForm, CalendarStyle, CalendarToolbar } from '../../components/_dashboard/calendar';
-
-// ----------------------------------------------------------------------
+import Page from '../../components/Page';
+import useSettings from '../../hooks/useSettings';
+import {
+  closeModal,
+  getEvents,
+  openModal,
+  selectEvent,
+  selectRange,
+  updateEvent,
+} from '../../redux/slices/calendar';
+import { RootState, useDispatch, useSelector } from '../../redux/store';
+import { PATH_DASHBOARD } from '../../routes/paths';
 
 const selectedEventSelector = (state: RootState) => {
   const { events, selectedEventId } = state.calendar;
@@ -51,9 +61,13 @@ export default function Calendar() {
   const calendarRef = useRef<FullCalendar>(null);
   const { enqueueSnackbar } = useSnackbar();
   const [date, setDate] = useState(new Date());
-  const [view, setView] = useState<CalendarView>(isMobile ? 'listWeek' : 'dayGridMonth');
+  const [view, setView] = useState<CalendarView>(
+    isMobile ? 'listWeek' : 'dayGridMonth'
+  );
   const selectedEvent = useSelector(selectedEventSelector);
-  const { events, isOpenModal, selectedRange } = useSelector((state: RootState) => state.calendar);
+  const { events, isOpenModal, selectedRange } = useSelector(
+    (state: RootState) => state.calendar
+  );
 
   useEffect(() => {
     dispatch(getEvents());
@@ -124,7 +138,7 @@ export default function Calendar() {
         updateEvent(event.id, {
           allDay: event.allDay,
           start: event.start,
-          end: event.end
+          end: event.end,
         })
       );
       enqueueSnackbar('Update event success', { variant: 'success' });
@@ -139,11 +153,11 @@ export default function Calendar() {
         updateEvent(event.id, {
           allDay: event.allDay,
           start: event.start,
-          end: event.end
+          end: event.end,
         })
       );
       enqueueSnackbar('Update event success', {
-        variant: 'success'
+        variant: 'success',
       });
     } catch (error) {
       console.error(error);
@@ -163,7 +177,10 @@ export default function Calendar() {
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <HeaderBreadcrumbs
           heading="Calendar"
-          links={[{ name: 'Dashboard', href: PATH_DASHBOARD.root }, { name: 'Calendar' }]}
+          links={[
+            { name: 'Dashboard', href: PATH_DASHBOARD.root },
+            { name: 'Calendar' },
+          ]}
           moreLink="https://fullcalendar.io/docs/react"
           action={
             <Button
@@ -211,14 +228,16 @@ export default function Calendar() {
                 dayGridPlugin,
                 timelinePlugin,
                 timeGridPlugin,
-                interactionPlugin
+                interactionPlugin,
               ]}
             />
           </CalendarStyle>
         </Card>
 
         <DialogAnimate open={isOpenModal} onClose={handleCloseModal}>
-          <DialogTitle>{selectedEvent ? 'Edit Event' : 'Add Event'}</DialogTitle>
+          <DialogTitle>
+            {selectedEvent ? 'Edit Event' : 'Add Event'}
+          </DialogTitle>
 
           <CalendarForm
             event={selectedEvent || {}}

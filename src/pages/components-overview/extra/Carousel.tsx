@@ -1,26 +1,29 @@
-// material
-import { styled } from '@material-ui/core/styles';
-import { Box, Grid, Card, Container, CardHeader, CardContent } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
 import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Grid,
+} from '@mui/material';
+import { styled } from '@mui/material
+
+import {
+  CarouselAnimation,
   CarouselBasic1,
   CarouselBasic2,
   CarouselBasic3,
   CarouselBasic4,
-  CarouselAnimation,
+  CarouselCenterMode,
   CarouselThumbnail,
-  CarouselCenterMode
 } from '../../../components/carousel';
-import Page from '../../../components/Page';
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
-
-// ----------------------------------------------------------------------
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function Carousel() {
@@ -31,13 +34,17 @@ export default function Carousel() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Carousel"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Carousel' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Carousel' },
+            ]}
             moreLink="https://react-slick.neostack.com"
           />
         </Container>

@@ -1,34 +1,30 @@
 import { useState } from 'react';
-// material
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { styled } from '@material-ui/core/styles';
 import {
   Box,
-  List,
-  Stack,
-  Menu,
   Button,
-  MenuItem,
   Container,
   IconButton,
+  List,
+  ListItemButton,
   ListItemText,
-  ListItemButton
-} from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
+  Menu,
+  MenuItem,
+  Stack,
+} from '@mui/material';
+import { styled } from '@mui/material
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
-
-// ----------------------------------------------------------------------
 
 const OPTIONS = [
   'Show some love to Material-UI',
   'Show all notification content',
   'Hide sensitive notification content',
-  'Hide all notification content'
+  'Hide all notification content',
 ];
 
 const OPTIONS_MAXHEIGHT = [
@@ -45,27 +41,27 @@ const OPTIONS_MAXHEIGHT = [
   'Sedna',
   'Titania',
   'Triton',
-  'Umbriel'
+  'Umbriel',
 ];
 
 const style = {
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function MenusComponent() {
   const [selectedIndex, setSelectedIndex] = useState(1);
   const [isOpen, setOpen] = useState<null | HTMLElement>(null);
   const [isOpenList, setOpenList] = useState<null | HTMLElement>(null);
-  const [isOpenMaxHeight, setOpenMaxHeight] = useState<null | HTMLElement>(null);
+  const [isOpenMaxHeight, setOpenMaxHeight] = useState<null | HTMLElement>(
+    null
+  );
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setOpenMaxHeight(event.currentTarget);
@@ -75,7 +71,10 @@ export default function MenusComponent() {
     setOpenList(event.currentTarget);
   };
 
-  const handleMenuItemClick = (event: React.MouseEvent<HTMLElement>, index: number) => {
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number
+  ) => {
     setSelectedIndex(index);
     setOpenList(null);
   };
@@ -99,13 +98,17 @@ export default function MenusComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Menus"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Menus' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Menus' },
+            ]}
             moreLink="https://next.material-ui.com/components/menus"
           />
         </Container>
@@ -139,7 +142,10 @@ export default function MenusComponent() {
                 aria-label="when device is locked"
                 onClick={handleClickListItem}
               >
-                <ListItemText primary="When device is locked" secondary={OPTIONS[selectedIndex]} />
+                <ListItemText
+                  primary="When device is locked"
+                  secondary={OPTIONS[selectedIndex]}
+                />
               </ListItemButton>
             </List>
             <Menu
@@ -180,12 +186,16 @@ export default function MenusComponent() {
               PaperProps={{
                 style: {
                   maxHeight: 48 * 4.5,
-                  width: '20ch'
-                }
+                  width: '20ch',
+                },
               }}
             >
               {OPTIONS_MAXHEIGHT.map((option) => (
-                <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleMaxHeightClose}>
+                <MenuItem
+                  key={option}
+                  selected={option === 'Pyxis'}
+                  onClick={handleMaxHeightClose}
+                >
                   {option}
                 </MenuItem>
               ))}

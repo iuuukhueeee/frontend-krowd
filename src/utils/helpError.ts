@@ -1,7 +1,4 @@
-// ----------------------------------------------------------------------
-
 export const codes = {
-  // Email
   emailAlreadyinUse: {
     code: 'auth/email-already-in-use',
     text: 'There already exists an account with the given email address.',
@@ -19,7 +16,6 @@ export const codes = {
     text: 'There is no user corresponding to the email address.',
   },
 
-  // Password
   wrongPassword: {
     code: 'auth/wrong-password',
     text: 'Wrong password',

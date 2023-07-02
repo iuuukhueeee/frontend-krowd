@@ -1,12 +1,8 @@
 // import { useLocation } from 'react-router-dom';
 import { forwardRef, ReactNode } from 'react';
 import { Helmet } from 'react-helmet-async';
-// material
 import { Box, BoxProps } from '@mui/material';
-// utils
 // import track from '../utils/analytics';
-
-// ----------------------------------------------------------------------
 
 interface PageProps extends BoxProps {
   children: ReactNode;

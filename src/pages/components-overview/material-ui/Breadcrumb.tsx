@@ -1,23 +1,26 @@
-// material
-import HomeIcon from '@material-ui/icons/Home';
+import {
+  Box,
+  Breadcrumbs,
+  Container,
+  Grid,
+  Link,
+  Typography,
+} from '@mui/material';
+import { styled } from '@mui/material
 import GrainIcon from '@material-ui/icons/Grain';
+import HomeIcon from '@material-ui/icons/Home';
 import WhatshotIcon from '@material-ui/icons/Whatshot';
-import { styled } from '@material-ui/core/styles';
-import { Box, Link, Grid, Container, Typography, Breadcrumbs } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../routes/paths';
-// components
-import Page from '../../../components/Page';
-import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+
 import { MBreadcrumbs } from '../../../components/@material-extend';
+import HeaderBreadcrumbs from '../../../components/HeaderBreadcrumbs';
+import Page from '../../../components/Page';
+import { PATH_PAGE } from '../../../routes/paths';
 //
 import { Block } from '../Block';
 
-// ----------------------------------------------------------------------
-
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
 
 export default function BreadcrumbComponent() {
@@ -28,13 +31,17 @@ export default function BreadcrumbComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
           <HeaderBreadcrumbs
             heading="Breadcrumbs"
-            links={[{ name: 'Components', href: PATH_PAGE.components }, { name: 'Breadcrumbs' }]}
+            links={[
+              { name: 'Components', href: PATH_PAGE.components },
+              { name: 'Breadcrumbs' },
+            ]}
             moreLink="https://next.material-ui.com/components/breadcrumbs"
           />
         </Container>
@@ -45,7 +52,11 @@ export default function BreadcrumbComponent() {
           <Grid item xs={12} md={6}>
             <Block
               title="Text"
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
               <Breadcrumbs>
                 <Link color="inherit" href="#">
@@ -54,7 +65,9 @@ export default function BreadcrumbComponent() {
                 <Link color="inherit" href="#">
                   Core
                 </Link>
-                <Typography sx={{ color: 'text.primary' }}>Breadcrumb</Typography>
+                <Typography sx={{ color: 'text.primary' }}>
+                  Breadcrumb
+                </Typography>
               </Breadcrumbs>
             </Block>
           </Grid>
@@ -62,14 +75,26 @@ export default function BreadcrumbComponent() {
           <Grid item xs={12} md={6}>
             <Block
               title="With Icon"
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
               <Breadcrumbs>
-                <Link color="inherit" href="#" sx={{ display: 'flex', alignItems: 'center' }}>
+                <Link
+                  color="inherit"
+                  href="#"
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
                   <HomeIcon sx={{ mr: 0.5, width: 20, height: 20 }} />
                   Material-UI
                 </Link>
-                <Link color="inherit" href="#" sx={{ display: 'flex', alignItems: 'center' }}>
+                <Link
+                  color="inherit"
+                  href="#"
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                >
                   <WhatshotIcon sx={{ mr: 0.5, width: 20, height: 20 }} />
                   Core
                 </Link>
@@ -77,7 +102,7 @@ export default function BreadcrumbComponent() {
                   sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    color: 'text.primary'
+                    color: 'text.primary',
                   }}
                 >
                   <GrainIcon sx={{ mr: 0.5, width: 20, height: 20 }} />
@@ -90,7 +115,11 @@ export default function BreadcrumbComponent() {
           <Grid item xs={12}>
             <Block
               title="Customized"
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
             >
               <MBreadcrumbs
                 links={[
@@ -99,7 +128,7 @@ export default function BreadcrumbComponent() {
                   { name: 'Link2', href: '#', icon: <WhatshotIcon /> },
                   { name: 'Link3', href: '#', icon: <WhatshotIcon /> },
                   { name: 'Link4', href: '#', icon: <WhatshotIcon /> },
-                  { name: 'Link5', href: '#', icon: <WhatshotIcon /> }
+                  { name: 'Link5', href: '#', icon: <WhatshotIcon /> },
                 ]}
               />
             </Block>

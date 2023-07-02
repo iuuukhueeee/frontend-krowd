@@ -1,13 +1,9 @@
-import { Icon } from '@iconify/react';
+import facebookFill from '@iconify/icons-eva/facebook-fill';
 import googleFill from '@iconify/icons-eva/google-fill';
 import twitterFill from '@iconify/icons-eva/twitter-fill';
-import facebookFill from '@iconify/icons-eva/facebook-fill';
-// material
-import { Grid, Button, Divider, Typography } from '@material-ui/core';
-// hooks
+import { Icon } from '@iconify/react';
+import { Button, Divider, Grid, Typography } from '@mui/material';
 // import useAuth from '../../hooks/useAuth';
-
-// ----------------------------------------------------------------------
 
 export default function AuthWithSocial() {
   // const { loginWithGoogle, loginWithFaceBook, loginWithTwitter } = useAuth();

@@ -1,10 +1,12 @@
 import { ReactNode } from 'react';
-// material
-import { Theme } from '@material-ui/core/styles';
-import { Card, CardHeader, Box, Typography } from '@material-ui/core';
-import { SxProps } from '@material-ui/system';
-
-// ----------------------------------------------------------------------
+import {
+  Box,
+  Card,
+  CardHeader,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material';
 
 type LabelProps = {
   title: string;
@@ -12,7 +14,12 @@ type LabelProps = {
 
 export function Label({ title }: LabelProps) {
   return (
-    <Typography variant="overline" component="p" gutterBottom sx={{ color: 'text.secondary' }}>
+    <Typography
+      variant="overline"
+      component="p"
+      gutterBottom
+      sx={{ color: 'text.secondary' }}
+    >
       {title}
     </Typography>
   );
@@ -32,7 +39,7 @@ export function Block({ title, sx, children }: BlockProps) {
         sx={{
           p: 3,
           minHeight: 180,
-          ...sx
+          ...sx,
         }}
       >
         {children}

@@ -1,11 +1,9 @@
-// material
-import FaceIcon from '@material-ui/icons/Face';
 import DoneIcon from '@material-ui/icons/Done';
-import { Avatar, Chip, Stack, Paper } from '@material-ui/core';
+import FaceIcon from '@material-ui/icons/Face';
+import { Avatar, Chip, Paper, Stack } from '@mui/material';
+
 //
 import { Label } from '../../Block';
-
-// ----------------------------------------------------------------------
 
 const style = {
   p: 2,
@@ -13,10 +11,8 @@ const style = {
   alignItems: 'center',
   justifyContent: 'center',
   flexWrap: 'wrap',
-  '& > *': { m: '8px !important' }
+  '& > *': { m: '8px !important' },
 } as const;
-
-// ----------------------------------------------------------------------
 
 export default function ChipOutlined() {
   const handleDelete = () => {
@@ -42,7 +38,12 @@ export default function ChipOutlined() {
           />
           <Chip
             variant="outlined"
-            avatar={<Avatar alt="Natacha" src="/static/mock-images/avatars/avatar_1.jpg" />}
+            avatar={
+              <Avatar
+                alt="Natacha"
+                src="/static/mock-images/avatars/avatar_1.jpg"
+              />
+            }
             label="Deletable"
             onDelete={handleDelete}
           />
@@ -60,7 +61,13 @@ export default function ChipOutlined() {
             onDelete={handleDelete}
             deleteIcon={<DoneIcon />}
           />
-          <Chip variant="outlined" label="Clickable Link" component="a" href="#chip" clickable />
+          <Chip
+            variant="outlined"
+            label="Clickable Link"
+            component="a"
+            href="#chip"
+            clickable
+          />
           <Chip
             variant="outlined"
             avatar={<Avatar>M</Avatar>}
@@ -94,7 +101,12 @@ export default function ChipOutlined() {
           <Chip
             variant="outlined"
             label="Default deletable"
-            avatar={<Avatar alt="Natacha" src="/static/mock-images/avatars/avatar_1.jpg" />}
+            avatar={
+              <Avatar
+                alt="Natacha"
+                src="/static/mock-images/avatars/avatar_1.jpg"
+              />
+            }
             onDelete={handleDelete}
             deleteIcon={<DoneIcon />}
           />
@@ -103,7 +115,12 @@ export default function ChipOutlined() {
             variant="outlined"
             clickable
             label="Default clickable"
-            avatar={<Avatar alt="Natacha" src="/static/mock-images/avatars/avatar_1.jpg" />}
+            avatar={
+              <Avatar
+                alt="Natacha"
+                src="/static/mock-images/avatars/avatar_1.jpg"
+              />
+            }
             onDelete={handleDelete}
             deleteIcon={<DoneIcon />}
           />
@@ -111,7 +128,12 @@ export default function ChipOutlined() {
           <Chip
             variant="outlined"
             label="Primary deletable"
-            avatar={<Avatar alt="Natacha" src="/static/mock-images/avatars/avatar_1.jpg" />}
+            avatar={
+              <Avatar
+                alt="Natacha"
+                src="/static/mock-images/avatars/avatar_1.jpg"
+              />
+            }
             color="primary"
             onDelete={handleDelete}
             deleteIcon={<DoneIcon />}
@@ -121,7 +143,12 @@ export default function ChipOutlined() {
             variant="outlined"
             clickable
             label="Primary clickable"
-            avatar={<Avatar alt="Natacha" src="/static/mock-images/avatars/avatar_1.jpg" />}
+            avatar={
+              <Avatar
+                alt="Natacha"
+                src="/static/mock-images/avatars/avatar_1.jpg"
+              />
+            }
             color="primary"
             onDelete={handleDelete}
             deleteIcon={<DoneIcon />}

@@ -1,34 +1,29 @@
 import { useState } from 'react';
-// material
-import { TabPanel, TabContext, TabList } from '@material-ui/lab';
-import { styled } from '@material-ui/core/styles';
-import { Box, Container, Tab } from '@material-ui/core';
-// routes
-import { PATH_PAGE } from '../../../../routes/paths';
-// components
-import Page from '../../../../components/Page';
+import { Box, Container, Tab } from '@mui/material';
+import { styled } from '@mui/material
+import { TabContext, TabList, TabPanel } from '@material-ui/lab';
+
 import HeaderBreadcrumbs from '../../../../components/HeaderBreadcrumbs';
+import Page from '../../../../components/Page';
+import { PATH_PAGE } from '../../../../routes/paths';
+
 //
 import PickerDate from './PickerDate';
-import PickerTime from './PickerTime';
-import PickerDateTime from './PickerDateTime';
 import PickerDateRange from './PickerDateRange';
-
-// ----------------------------------------------------------------------
+import PickerDateTime from './PickerDateTime';
+import PickerTime from './PickerTime';
 
 const PICKERS = [
   { name: 'Date', component: <PickerDate /> },
   { name: 'DateTime', component: <PickerDateTime /> },
   { name: 'DateRange', component: <PickerDateRange /> },
-  { name: 'Time', component: <PickerTime /> }
+  { name: 'Time', component: <PickerTime /> },
 ];
 
 const RootStyle = styled(Page)(({ theme }) => ({
   paddingTop: theme.spacing(11),
-  paddingBottom: theme.spacing(15)
+  paddingBottom: theme.spacing(15),
 }));
-
-// ----------------------------------------------------------------------
 
 export default function PickersComponent() {
   const [value, setValue] = useState('1');
@@ -44,7 +39,8 @@ export default function PickersComponent() {
           pt: 6,
           pb: 1,
           mb: 10,
-          bgcolor: (theme) => (theme.palette.mode === 'light' ? 'grey.200' : 'grey.800')
+          bgcolor: (theme) =>
+            theme.palette.mode === 'light' ? 'grey.200' : 'grey.800',
         }}
       >
         <Container maxWidth="lg">
@@ -52,7 +48,7 @@ export default function PickersComponent() {
             heading="Date / Time pickers"
             links={[
               { name: 'Components', href: PATH_PAGE.components },
-              { name: 'Date / Time pickers' }
+              { name: 'Date / Time pickers' },
             ]}
             moreLink="https://next.material-ui.com/components/pickers"
           />
@@ -63,7 +59,12 @@ export default function PickersComponent() {
         <TabContext value={value}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             {PICKERS.map((tab, index) => (
-              <Tab disableRipple key={tab.name} label={tab.name} value={String(index + 1)} />
+              <Tab
+                disableRipple
+                key={tab.name}
+                label={tab.name}
+                value={String(index + 1)}
+              />
             ))}
           </TabList>
 

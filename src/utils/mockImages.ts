@@ -1,5 +1,3 @@
-// ----------------------------------------------------------------------
-
 export const mockImgCover = (index: number) =>
   `/static/mock-images/covers/cover_${index}.jpg`;
 

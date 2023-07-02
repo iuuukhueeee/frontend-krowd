@@ -1,13 +1,12 @@
 import { useState } from 'react';
-// material
-import { Card, Grid } from '@material-ui/core';
+import { Card, Grid } from '@mui/material';
+
+import ControlPanel from '../ControlPanel';
+
+import ContainerView from './ContainerView';
+import Toolbar from './Toolbar';
 //
 import variantTypes from './types';
-import Toolbar from './Toolbar';
-import ControlPanel from '../ControlPanel';
-import ContainerView from './ContainerView';
-
-// ----------------------------------------------------------------------
 
 export default function Inview() {
   const [count, setCount] = useState(0);
@@ -36,7 +35,12 @@ export default function Inview() {
 
       <Grid container spacing={3}>
         <Grid item xs={9}>
-          <ContainerView key={count} isText={text} isMulti={multi} selectVariant={selectVariant} />
+          <ContainerView
+            key={count}
+            isText={text}
+            isMulti={multi}
+            selectVariant={selectVariant}
+          />
         </Grid>
         <Grid item xs={3}>
           <ControlPanel
